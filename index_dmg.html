@@ -1,0 +1,528 @@
+<title>Anastasiya Lupashko — Customer Insights Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap">
+
+<style>
+/* ── Design tokens ── */
+:root {
+  --bg:        #F2F0EB;
+  --surface:   #FFFFFF;
+  --fg:        #1A1A1A;
+  --fg-muted:  #5C5C5C;
+  --primary:   #1C1C2E;
+  --accent:    #9A4E9E;
+  --accent-lt: #F3EBF4;
+  --border:    #DEDAD2;
+  --tag-bg:    #ECEAE4;
+  --tag-fg:    #3D3A34;
+  --metric-bg: #1C1C2E;
+  --metric-fg: #FFFFFF;
+
+  --font-display: 'Lora', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #13121A;
+    --surface:   #1E1D28;
+    --fg:        #E5E1DA;
+    --fg-muted:  #8A8880;
+    --primary:   #C8C4DC;
+    --accent:    #C07EC4;
+    --accent-lt: #1E1022;
+    --border:    #2C2B38;
+    --tag-bg:    #262535;
+    --tag-fg:    #A8A4BC;
+    --metric-bg: #1E1D30;
+    --metric-fg: #E5E1DA;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #13121A;
+  --surface:   #1E1D28;
+  --fg:        #E5E1DA;
+  --fg-muted:  #8A8880;
+  --primary:   #C8C4DC;
+  --accent:    #C07EC4;
+  --accent-lt: #1E1022;
+  --border:    #2C2B38;
+  --tag-bg:    #262535;
+  --tag-fg:    #A8A4BC;
+  --metric-bg: #1E1D30;
+  --metric-fg: #E5E1DA;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+  padding-inline: 24px;
+  padding-block: 48px 80px;
+}
+
+.wrap {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+/* ── Header ── */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 40px;
+  margin-bottom: 56px;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 10px;
+  text-wrap: balance;
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: var(--fg-muted);
+  margin: 0 0 24px;
+  font-weight: 300;
+}
+
+.intro {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--fg);
+  max-width: 640px;
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+  margin: 0;
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* ── Section heading ── */
+.section-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Case study card ── */
+.case {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px 40px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.case::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 4px 0 0 4px;
+}
+
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.case-context {
+  font-size: 12px;
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 2px;
+  letter-spacing: 0.03em;
+}
+
+.case-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 20px;
+  text-wrap: balance;
+  line-height: 1.3;
+}
+
+.case-body {
+  display: grid;
+  gap: 18px;
+}
+
+.block-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.case-body p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--fg);
+  line-height: 1.7;
+}
+
+/* ── Metrics row ── */
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.metric {
+  background: var(--metric-bg);
+  color: var(--metric-fg);
+  padding: 12px 18px;
+  border-radius: 3px;
+  min-width: 130px;
+  flex: 1;
+}
+
+.metric-num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-label {
+  font-size: 11px;
+  opacity: 0.75;
+  line-height: 1.35;
+}
+
+/* ── Leadership card variant ── */
+.case.leadership::before {
+  background: #7A5C8A;
+}
+.case.leadership .block-label {
+  color: #7A5C8A;
+}
+.case.leadership .metric {
+  background: #2D1F38;
+}
+
+/* ── Brand / segmentation card variant ── */
+.case.brand::before {
+  background: #1A6E8A;
+}
+.case.brand .block-label {
+  color: #1A6E8A;
+}
+.case.brand .metric {
+  background: #0F2D3A;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 6px;
+}
+
+.footer-contact {
+  font-size: 13.5px;
+  color: var(--fg-muted);
+  line-height: 1.8;
+}
+
+.footer-note {
+  font-size: 12px;
+  color: var(--fg-muted);
+  max-width: 280px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 540px) {
+  body { padding-inline: 18px; }
+  .case { padding: 24px 20px; }
+  .metric { min-width: 100px; }
+}
+</style>
+
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="site-header">
+    <p class="eyebrow">Research Portfolio</p>
+    <h1>Anastasiya Lupashko</h1>
+    <p class="subtitle">Head of Customer Insights &nbsp;·&nbsp; Mixed Methods Research &nbsp;·&nbsp; Audience Intelligence</p>
+    <p class="intro">Seven years translating customer behaviour into strategic direction across regulated financial services. This portfolio is prepared for the Head of Customer Insights role at DMG Media, with a focus on customer segmentation, Voice of Customer programmes, experimentation and stakeholder influence at senior level.</p>
+  </header>
+
+  <!-- Case Studies -->
+  <p class="section-label">Selected work</p>
+
+  <!-- Case 1: VoC Programme -->
+  <article class="case">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2023 to 2026</span>
+    </div>
+    <h2 class="case-title">Voice of Customer Programme: Building a Single Intelligence System from Fragmented Data</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>Customer feedback was scattered across disconnected silos. Sales teams held anecdotal signals. Product managers operated on untested assumptions. Web analytics described behaviour with no context behind it. Usability research produced findings that rarely travelled beyond the research team. There was no unified view of the customer, and no team could see the full picture on its own.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Built a multi-channel VoC programme from nothing. Designed and integrated NPS surveys, in-product feedback mechanisms, structured user interviews, session analytics, usability research, and structured input from sales calls and product managers into a coherent programme with a shared taxonomy and a single reporting structure. Created distinct reporting cadences for product, commercial, marketing and senior leadership, giving each team a different cut of the same evidence base: tailored to their decisions, not a generic quarterly dump. Research became infrastructure the business ran on, rather than a service teams requested when they remembered to.</p>
+      </div>
+      <div>
+        <div class="block-label">Impact</div>
+        <p>Customer insight moved from the margins of planning to the centre of it. Research shaped roadmap priorities, campaign design, commercial strategy and executive decisions. Multiple product and content changes were directly attributable to VoC findings that would previously have remained invisible in separate silos.</p>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">NPS</span>
+      <span class="tag">In-product surveys</span>
+      <span class="tag">User interviews</span>
+      <span class="tag">Behavioural analytics</span>
+      <span class="tag">Cross-team integration</span>
+      <span class="tag">Research operations</span>
+    </div>
+  </article>
+
+  <!-- Case 2: Audience / Segmentation -->
+  <article class="case brand">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2023 to 2026</span>
+    </div>
+    <h2 class="case-title">Audience Segmentation and Hard-to-Reach Research Programme</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>The business was targeting a broad audience of prospective retail traders but lacked granular understanding of who was actually converting, why distinct segments behaved differently, and what each segment needed at each stage of the journey. Standard recruitment methods were not reaching the segments most likely to convert, and the insight that did exist was not structured in a way that could drive campaign or product decisions.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Designed a mixed-methods programme combining quantitative survey research with structured qualitative interviews, targeted explicitly at audience segments that conventional recruitment missed: users who had abandoned journeys part-way through, prospective customers who had not yet engaged with the product, and existing users whose behaviour patterns suggested different underlying motivations. Combined survey data, session analytics from ContentSquare, funnel analysis from Mixpanel and qualitative synthesis into a layered segmentation model that mapped behaviour, attitude and need across distinct audience groups.</p>
+      </div>
+      <div>
+        <div class="block-label">Key insight</div>
+        <p>Behavioural clusters did not map to the demographic segments the business had been treating as primary. The highest-value prospective audience had distinct informational needs at the consideration stage that existing content was not meeting, and their abandonment was driven by confidence, not friction. Campaigns and content strategy were adjusted accordingly.</p>
+      </div>
+      <div>
+        <div class="block-label">Impact</div>
+        <p>Segmentation findings directly informed campaign targeting, onboarding content strategy and product messaging. The model became the reference frame for audience planning across marketing and product for subsequent planning cycles.</p>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">+5%</div>
+        <div class="metric-label">Conversion completion rate following content and journey changes</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">↑</div>
+        <div class="metric-label">Post-onboarding activity rates</div>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">Customer segmentation</span>
+      <span class="tag">Survey research</span>
+      <span class="tag">Qualitative interviews</span>
+      <span class="tag">ContentSquare</span>
+      <span class="tag">Mixpanel</span>
+      <span class="tag">Audience strategy</span>
+    </div>
+  </article>
+
+  <!-- Case 3: Experimentation -->
+  <article class="case">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2024 to 2026</span>
+    </div>
+    <h2 class="case-title">Experimentation Programme: Closing the Loop Between Research and Measurable Change</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>Product and content decisions were driven by opinion and seniority rather than evidence. Research findings were shared but rarely actioned, and the business had no mechanism for testing whether its hypotheses were right before committing to them. Insight and outcome were not connected.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Built an end-to-end experimentation programme fed continuously by qualitative and quantitative research. Developed hypotheses directly from research findings, designed A/B and multivariant tests to validate them, and closed the loop by feeding test outcomes back into the research agenda. Worked with product, marketing and content teams to embed hypothesis-led testing as a standard part of decision-making rather than an occasional exercise.</p>
+      </div>
+      <div>
+        <div class="block-label">Key insight</div>
+        <p>Homepage messaging was creating uncertainty rather than confidence in prospective users. Primary calls to action were placed where users' attention had already moved on. Changes informed by research, validated by testing, produced measurable improvements within weeks rather than planning cycles.</p>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">75→51%</div>
+        <div class="metric-label">Homepage bounce rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">3.2→8.4%</div>
+        <div class="metric-label">CTA clickthrough rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">+24%</div>
+        <div class="metric-label">Journey completion</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">15→26%</div>
+        <div class="metric-label">Scroll depth</div>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">A/B testing</span>
+      <span class="tag">Multivariant testing</span>
+      <span class="tag">Hypothesis development</span>
+      <span class="tag">CRO</span>
+      <span class="tag">Optimizely</span>
+      <span class="tag">Funnel analysis</span>
+    </div>
+  </article>
+
+  <!-- Case 4: Stakeholder influence -->
+  <article class="case brand">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2023 to 2026</span>
+    </div>
+    <h2 class="case-title">Research at Executive Level: Shifting How Decisions Are Made</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>Research was valued as a support function but not yet treated as a strategic input. Senior leaders and commercial teams consulted research after decisions had already been shaped by intuition and internal politics. The insight existed. The challenge was to reposition it at the point where decisions were being formed, not after.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Designed insight communication deliberately for different audiences: executive summaries for VP and C-level decisions, commercial-framed analysis for marketing and sales leadership, and evidence packs structured around the specific questions teams brought into planning sessions. Built relationships with product directors, commercial leads and marketing heads so that research was consulted before decisions were made, not briefed on them afterwards. Presented findings directly to VP level and contributed to strategic planning cycles as an evidence partner rather than a reporting function.</p>
+      </div>
+      <div>
+        <div class="block-label">Impact</div>
+        <p>Research influenced roadmap prioritisation, campaign strategy, pricing communication and commercial planning. Decisions that had previously been made on assumption were consistently brought back to the evidence base. The research function became a standing part of senior planning rather than a reactive service.</p>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">Executive communication</span>
+      <span class="tag">Stakeholder influence</span>
+      <span class="tag">Strategic planning</span>
+      <span class="tag">Commercial alignment</span>
+      <span class="tag">Research positioning</span>
+    </div>
+  </article>
+
+  <!-- Case 5: Building the team -->
+  <article class="case leadership">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2024 to 2026</span>
+    </div>
+    <h2 class="case-title">Scaling the Insights Function: From Solo Practitioner to Strategic Lead</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>As research demand grew and the function's remit expanded to executive level, a single researcher could not cover both strategic leadership and hands-on delivery. The challenge was to expand the team without sacrificing research quality, build researcher capability deliberately, and make the transition from doing the work to leading it.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Hired and trained two researchers from the ground up. Designed their development deliberately: beginning with structured methods training and supervised study execution, progressing toward independent project ownership with coaching rather than oversight. Set clear standards for research quality and rigour, provided regular feedback on their outputs, and took accountability for the standard they produced. As their capability grew, shifted personal focus to programme strategy, research design at scale, executive influence and the connection between customer insight and business decisions at VP level.</p>
+      </div>
+      <div>
+        <div class="block-label">Outcome</div>
+        <p>Both researchers reached independent operation across complex mixed-methods studies. Research sat at VP level with direct influence on roadmap and commercial decisions. The team could run parallel streams, cover more of the customer journey, and maintain the rigour that had built the function's credibility across the organisation.</p>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">2</div>
+        <div class="metric-label">Researchers hired, trained and taken to independent operation</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">VP</div>
+        <div class="metric-label">Level at which insights sat in the organisation</div>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">People management</span>
+      <span class="tag">Team development</span>
+      <span class="tag">Coaching</span>
+      <span class="tag">Research strategy</span>
+      <span class="tag">Function building</span>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+      <p class="footer-name">Anastasiya Lupashko</p>
+      <div class="footer-contact">
+        anast.lup@gmail.com<br>
+        +44 7596 831351<br>
+        linkedin.com/in/anastasiya-lupashko-47360920a<br>
+        London, UK
+      </div>
+    </div>
+    <p class="footer-note">All case studies describe work carried out at Stratos Markets Ltd (trading as Tradu) and FXCM. Metrics and outcomes are drawn from internal reporting and directly attributable programme results.</p>
+  </footer>
+
+</div>
