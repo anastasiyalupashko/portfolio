@@ -1,0 +1,534 @@
+<title>Anastasiya Lupashko Research Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap">
+
+<style>
+/* ── Design tokens ── */
+/* Layout: single-column narrative, case studies as structured evidence cards */
+:root {
+  --bg:        #F0EEE9;
+  --surface:   #FFFFFF;
+  --fg:        #1A1A1A;
+  --fg-muted:  #5C5C5C;
+  --primary:   #1A2D40;
+  --accent:    #1B6B58;
+  --accent-lt: #E8F3F0;
+  --border:    #D9D6CF;
+  --tag-bg:    #EAE8E3;
+  --tag-fg:    #3D3A34;
+  --metric-bg: #1A2D40;
+  --metric-fg: #FFFFFF;
+
+  --font-display: 'Lora', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #111820;
+    --surface:   #1C2530;
+    --fg:        #E5E1DA;
+    --fg-muted:  #8A8880;
+    --primary:   #B8CDDF;
+    --accent:    #3DB895;
+    --accent-lt: #0F2820;
+    --border:    #2C3540;
+    --tag-bg:    #252F3A;
+    --tag-fg:    #A8B4BC;
+    --metric-bg: #1E3248;
+    --metric-fg: #E5E1DA;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #111820;
+  --surface:   #1C2530;
+  --fg:        #E5E1DA;
+  --fg-muted:  #8A8880;
+  --primary:   #B8CDDF;
+  --accent:    #3DB895;
+  --accent-lt: #0F2820;
+  --border:    #2C3540;
+  --tag-bg:    #252F3A;
+  --tag-fg:    #A8B4BC;
+  --metric-bg: #1E3248;
+  --metric-fg: #E5E1DA;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+  padding-inline: 24px;
+  padding-block: 48px 80px;
+}
+
+.wrap {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+/* ── Header ── */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 40px;
+  margin-bottom: 56px;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 10px;
+  text-wrap: balance;
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: var(--fg-muted);
+  margin: 0 0 24px;
+  font-weight: 300;
+}
+
+.intro {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--fg);
+  max-width: 640px;
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+  margin: 0;
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* ── Section heading ── */
+.section-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin: 0 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Case study card ── */
+.case {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px 40px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.case::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 4px 0 0 4px;
+}
+
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.case-context {
+  font-size: 12px;
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 2px;
+  letter-spacing: 0.03em;
+}
+
+.case-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 20px;
+  text-wrap: balance;
+  line-height: 1.3;
+}
+
+.case-body {
+  display: grid;
+  gap: 18px;
+}
+
+.block-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.case-body p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--fg);
+  line-height: 1.7;
+}
+
+/* ── Metrics row ── */
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.metric {
+  background: var(--metric-bg);
+  color: var(--metric-fg);
+  padding: 12px 18px;
+  border-radius: 3px;
+  min-width: 130px;
+  flex: 1;
+}
+
+.metric-num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-label {
+  font-size: 11px;
+  opacity: 0.75;
+  line-height: 1.35;
+}
+
+/* ── Leadership case study variant ── */
+.case.leadership::before {
+  background: #7A5C8A;
+}
+.case.leadership .block-label,
+.case.leadership .case-meta .case-context span.dot {
+  color: #7A5C8A;
+}
+.case.leadership .metric {
+  background: #2D1F38;
+}
+
+/* ── AI case study variant ── */
+.case.ai-tool::before {
+  background: #2B5BA8;
+}
+.case.ai-tool .block-label {
+  color: #2B5BA8;
+}
+.case.ai-tool .metric {
+  background: #1A2D50;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 6px;
+}
+
+.footer-contact {
+  font-size: 13.5px;
+  color: var(--fg-muted);
+  line-height: 1.8;
+}
+
+.footer-note {
+  font-size: 12px;
+  color: var(--fg-muted);
+  max-width: 280px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 540px) {
+  body { padding-inline: 18px; }
+  .case { padding: 24px 20px; }
+  .metric { min-width: 100px; }
+}
+</style>
+
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="site-header">
+    <p class="eyebrow">Research Portfolio</p>
+    <h1>Anastasiya Lupashko</h1>
+    <p class="subtitle">Lead Researcher &nbsp;·&nbsp; Regulated Financial Services &nbsp;·&nbsp; People Leadership</p>
+    <p class="intro">Seven years building research that changes decisions in regulated financial services, from verification and onboarding to product strategy and commercial planning. This portfolio is prepared for the Lead Researcher, Verification Experience role at Wise.</p>
+  </header>
+
+  <!-- Case Studies -->
+  <p class="section-label">Selected work</p>
+
+  <!-- Case 1: Verification & Onboarding -->
+  <article class="case">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2023 to 2026</span>
+    </div>
+    <h2 class="case-title">Onboarding, Verification & Funding Research Programme</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>A new regulated trading platform was losing applicants at scale. The product team believed drop-off was concentrated at the identity verification step and had invested in optimising it. Applications were still being abandoned, and the team lacked evidence from the segments most likely to convert: users who had started and stopped, and audiences who were not completing at all.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Designed a survey programme targeting users who had abandoned the onboarding journey, including segments that standard recruitment methods could not reach. Ran structured usability testing sessions across the complete onboarding, identity verification and account funding journeys, covering multiple user scenarios and experience levels. Combined survey findings, session recordings from ContentSquare, analytics funnels from Mixpanel, and usability synthesis into a single evidence base to build a complete picture of where, why and for whom the journey was breaking down.</p>
+      </div>
+      <div>
+        <div class="block-label">Key insight</div>
+        <p>Drop-off was not primarily at the verification step. Users were losing confidence earlier, at the account funding stage, where the language around margin requirements and risk warnings felt financially threatening and ambiguous. The product team had been optimising the wrong stage of the journey for months. Verification itself was completing at a higher rate than assumed; it was being reached by fewer users than it should have been.</p>
+      </div>
+      <div>
+        <div class="block-label">Impact</div>
+        <p>Redirected product and content effort to the funding flow. Recommendations led to a redesign of the funding experience, risk language and onboarding communications for key segments.</p>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">+5%</div>
+        <div class="metric-label">Conversion completion rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">↑</div>
+        <div class="metric-label">Retention measurably improved</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">↑</div>
+        <div class="metric-label">Post-onboarding trading activity</div>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">Survey research</span>
+      <span class="tag">Usability testing</span>
+      <span class="tag">ContentSquare</span>
+      <span class="tag">Mixpanel</span>
+      <span class="tag">Journey analysis</span>
+      <span class="tag">Mixed methods synthesis</span>
+    </div>
+  </article>
+
+  <!-- Case 2: Experimentation -->
+  <article class="case">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2024 to 2026</span>
+    </div>
+    <h2 class="case-title">Experimentation Programme</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>Product decisions at Tradu were driven by opinion and seniority rather than evidence. There was no systematic link between research insight and measurable product change. Findings were shared but rarely actioned, and the business had no mechanism for testing whether its hypotheses were right before committing to them.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Built an end-to-end experimentation programme fed continuously by qualitative and quantitative research. Developed hypotheses directly from research findings, designed A/B and multivariant tests to validate them, and closed the loop by feeding test outcomes back into the research agenda. Research became the engine of the experimentation cycle rather than a separate stream running alongside it.</p>
+      </div>
+      <div>
+        <div class="block-label">Key insight</div>
+        <p>The biggest conversion barriers were not where the business expected them. Homepage messaging was creating uncertainty rather than confidence in prospective traders, and primary CTAs were positioned where users' attention had already moved on.</p>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">75→51%</div>
+        <div class="metric-label">Homepage bounce rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">3.2→8.4%</div>
+        <div class="metric-label">CTA clickthrough rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">+24%</div>
+        <div class="metric-label">Successful journey completion</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">15→26%</div>
+        <div class="metric-label">Scroll depth</div>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">A/B testing</span>
+      <span class="tag">Multivariant testing</span>
+      <span class="tag">Hypothesis development</span>
+      <span class="tag">Funnel analysis</span>
+      <span class="tag">Optimizely</span>
+      <span class="tag">CRO</span>
+    </div>
+  </article>
+
+  <!-- Case 3: VoC -->
+  <article class="case">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2023 to 2026</span>
+    </div>
+    <h2 class="case-title">Voice of Customer Programme: Multi-Channel Intelligence System</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>At Tradu, customer feedback was fragmented across silos. Sales teams had anecdotal signals; product managers had their own intuitions; web analytics told a behavioural story with no context behind it; usability sessions generated findings that rarely left the research team. There was no unified, continuous view of the customer, and no single team could see the full picture.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Built a multi-channel VoC programme from nothing. Designed and integrated NPS surveys, in-product feedback mechanisms, structured user interviews, session analytics, usability research, and systematic input from sales calls and product manager observations into a single coherent programme with a shared taxonomy. Created a reporting cadence that gave product, commercial, marketing and senior leadership different cuts of the same evidence base, tailored to each team's decisions rather than a generic quarterly report. Research became infrastructure rather than a service teams requested when they remembered to.</p>
+      </div>
+      <div>
+        <div class="block-label">Impact</div>
+        <p>Customer insight moved from the margins of planning to the centre of it. Research shaped roadmap priorities, campaign design, commercial strategy and executive decisions. Multiple product changes were directly attributable to VoC findings that would otherwise have remained invisible in separate silos.</p>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">NPS</span>
+      <span class="tag">Surveys</span>
+      <span class="tag">User interviews</span>
+      <span class="tag">Behavioural analytics</span>
+      <span class="tag">Cross team integration</span>
+      <span class="tag">Research operations</span>
+    </div>
+  </article>
+
+  <!-- Case 4: Building the team -->
+  <article class="case leadership">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2024 to 2026</span>
+    </div>
+    <h2 class="case-title">Scaling the Research Function: From Solo Practitioner to Strategic Lead</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>As research demand grew and the function's remit expanded to executive level, it became clear that a single researcher could not cover both strategic leadership and hands-on delivery. The challenge was to expand the team without losing research quality, build researcher capability deliberately, and make the transition from doing the work to leading it.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Hired and trained two researchers from the ground up. Designed their development deliberately: starting with structured methods training and supervised study execution, moving toward independent project ownership with coaching rather than oversight. Set clear expectations for research quality and rigour, gave regular feedback on their work, and took responsibility for the standard of their outputs. As their capability grew, shifted personal focus to research strategy, programme design, executive influence and the connection between research and business decisions at VP level.</p>
+      </div>
+      <div>
+        <div class="block-label">Outcome</div>
+        <p>Both researchers reached independent operation on complex studies covering multiple methods. Research sat at VP level with direct influence on roadmap and commercial decisions. The team could run parallel research streams, cover more of the product and more of the customer journey, and maintain the rigour that had earned the function its credibility.</p>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-num">2</div>
+        <div class="metric-label">Researchers hired and trained to independent operation</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">VP</div>
+        <div class="metric-label">Level at which research sat in the organisation</div>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">People management</span>
+      <span class="tag">Research development</span>
+      <span class="tag">Coaching</span>
+      <span class="tag">Research strategy</span>
+      <span class="tag">Stakeholder influence</span>
+    </div>
+  </article>
+
+  <!-- Case 5: Opal AI -->
+  <article class="case ai-tool">
+    <div class="case-meta">
+      <span class="case-context">Stratos Markets / Tradu &nbsp;·&nbsp; 2025 to 2026</span>
+    </div>
+    <h2 class="case-title">Opal AI: Research Intelligence Platform</h2>
+    <div class="case-body">
+      <div>
+        <div class="block-label">Challenge</div>
+        <p>Qualitative synthesis was the rate-limiting step in research delivery. A growing volume of interviews, usability sessions and survey open-text responses was taking significant time to process, which delayed insight and limited how much the team could tackle within any given sprint or planning cycle. The bottleneck was not capacity. It was the manual overhead of finding patterns across large, unstructured data sets.</p>
+      </div>
+      <div>
+        <div class="block-label">Approach</div>
+        <p>Built Opal AI, a purpose-designed research assistant, to automate qualitative synthesis and pattern recognition across research data. Designed it with research rigour as a non-negotiable constraint: outputs are framed as hypotheses for the researcher to validate, not findings to be accepted uncritically. Integrated it into the team's regular workflow and trained both researchers to use it as a force multiplier rather than a replacement for judgement.</p>
+      </div>
+      <div>
+        <div class="block-label">Impact</div>
+        <p>Faster synthesis cycles across all qualitative streams. The team could handle broader, more complex analyses within the same timeframes: multiple simultaneous studies, larger participant sets, richer cross-stream synthesis. Opal AI became shared infrastructure for the research function and a model for how AI tooling should be introduced to research work, with clear scope, clear limits and human oversight at every output stage.</p>
+      </div>
+    </div>
+    <div class="case-meta" style="margin-top:18px;margin-bottom:0;">
+      <span class="tag">AI assisted synthesis</span>
+      <span class="tag">Research infrastructure</span>
+      <span class="tag">Tool design</span>
+      <span class="tag">Workflow integration</span>
+      <span class="tag">Qualitative analysis</span>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+      <p class="footer-name">Anastasiya Lupashko</p>
+      <div class="footer-contact">
+        anast.lup@gmail.com<br>
+        +44 7596 831351<br>
+        linkedin.com/in/anastasiya-lupashko-47360920a<br>
+        London, UK
+      </div>
+    </div>
+    <p class="footer-note">All case studies describe work carried out at Stratos Markets Ltd (trading as Tradu) and FXCM. Metrics and outcomes are drawn from internal reporting and directly attributable programme results.</p>
+  </footer>
+
+</div>
