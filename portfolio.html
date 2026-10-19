@@ -1,0 +1,643 @@
+<title>Anastasiya Lupashko</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap">
+
+<style>
+/* ── tokens ── */
+:root {
+  --bg:       #F6F5F1;
+  --bg2:      #EEEDEA;
+  --fg:       #1A1917;
+  --fg2:      #6B6760;
+  --accent:   #1A4A6E;
+  --accent-l: #E8F0F7;
+  --border:   #DDDBD5;
+  --white:    #FFFFFF;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:       #141210;
+    --bg2:      #1E1C1A;
+    --fg:       #F0EDE8;
+    --fg2:      #9D9A94;
+    --accent:   #5B9BC4;
+    --accent-l: #162535;
+    --border:   #2C2A27;
+    --white:    #1E1C1A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:       #141210;
+  --bg2:      #1E1C1A;
+  --fg:       #F0EDE8;
+  --fg2:      #9D9A94;
+  --accent:   #5B9BC4;
+  --accent-l: #162535;
+  --border:   #2C2A27;
+  --white:    #1E1C1A;
+  color-scheme: dark;
+}
+
+/* ── reset / base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── nav ── */
+nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+  padding-block: 0;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 11;
+}
+.nav-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 18px;
+  gap: 16px;
+}
+.nav-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--fg);
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg2);
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--fg); text-decoration: none; }
+
+/* ── wrapper ── */
+.wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* ── hero ── */
+.hero {
+  padding-block: 80px 64px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.hero-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  text-wrap: balance;
+  margin-bottom: 28px;
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-tagline {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--fg2);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+.hero-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  transition: opacity 0.15s;
+  cursor: pointer;
+}
+.btn:hover { opacity: 0.82; text-decoration: none; }
+.btn-primary { background: var(--accent); color: var(--bg); }
+.btn-secondary { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+.hero-contact {
+  font-size: 0.82rem;
+  color: var(--fg2);
+  margin-top: 16px;
+}
+.hero-contact span { user-select: all; color: var(--fg); }
+
+/* ── section base ── */
+section { padding-block: 64px; border-bottom: 1px solid var(--border); }
+section:last-child { border-bottom: none; }
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--fg);
+  text-wrap: balance;
+  margin-bottom: 40px;
+}
+
+/* ── impact numbers strip ── */
+.impact-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 56px;
+}
+.impact-cell {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+}
+.impact-cell:last-child { border-right: none; }
+.impact-num {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.impact-desc {
+  font-size: 0.82rem;
+  color: var(--fg2);
+  line-height: 1.4;
+}
+
+/* ── work cards ── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.card-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.card-body {
+  font-size: 0.9rem;
+  color: var(--fg2);
+  line-height: 1.65;
+  flex: 1;
+}
+.card-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.82rem;
+}
+.metric-label { color: var(--fg2); }
+.metric-value {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ── expertise ── */
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.expertise-item {
+  padding: 20px;
+  background: var(--bg2);
+  border-radius: 4px;
+}
+.expertise-title {
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+.expertise-list {
+  font-size: 0.8rem;
+  color: var(--fg2);
+  line-height: 1.6;
+}
+
+/* ── tools ── */
+.tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tool-chip {
+  font-size: 0.78rem;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--fg2);
+  background: var(--bg);
+}
+
+/* ── about ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.about-text p {
+  font-size: 1rem;
+  color: var(--fg);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.about-text p:last-child { margin-bottom: 0; }
+.about-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.fact {
+  padding-block: 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fact:first-child { border-top: 1px solid var(--border); }
+.fact-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg2);
+}
+.fact-value { font-size: 0.9rem; color: var(--fg); }
+
+/* ── career ── */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tline-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.tline-item:last-child { border-bottom: none; }
+.tline-dates {
+  font-size: 0.78rem;
+  color: var(--fg2);
+  padding-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+.tline-role { font-weight: 500; font-size: 0.92rem; color: var(--fg); margin-bottom: 4px; }
+.tline-org { font-size: 0.85rem; color: var(--fg2); }
+
+/* ── contact ── */
+.contact-block {
+  max-width: 480px;
+}
+.contact-block p {
+  font-size: 1rem;
+  color: var(--fg2);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.contact-line {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact-item {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 0.88rem;
+}
+.contact-type {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg2);
+  min-width: 56px;
+}
+.contact-val { color: var(--fg); user-select: all; }
+
+/* ── footer ── */
+footer {
+  padding-block: 32px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--fg2);
+}
+
+/* ── responsive ── */
+@media (max-width: 680px) {
+  .impact-strip { grid-template-columns: 1fr 1fr; }
+  .impact-cell:nth-child(2) { border-right: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .tline-item { grid-template-columns: 1fr; gap: 4px; }
+  .tline-dates { font-size: 0.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner wrap">
+    <span class="nav-name">Anastasiya Lupashko</span>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="wrap">
+  <div class="hero">
+    <p class="hero-label">Senior User Researcher &amp; CRO Specialist</p>
+    <h1 class="hero-name">Research that <em>changes</em> what gets built.</h1>
+    <p class="hero-tagline">Over five years building research functions, running mixed-methods programmes and connecting user insight to the decisions that move commercial metrics. Based in London.</p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/anastasiya-lupashko" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-secondary" href="#contact">Get in touch</a>
+    </div>
+    <p class="hero-contact">anast.lup@gmail.com &nbsp;·&nbsp; +44 7596 831351</p>
+  </div>
+
+  <!-- IMPACT STRIP -->
+  <section id="work" style="padding-top: 64px;">
+    <p class="section-label">Selected Impact</p>
+    <h2 class="section-title">Research that earns its keep.</h2>
+
+    <div class="impact-strip">
+      <div class="impact-cell">
+        <div class="impact-num">24%</div>
+        <div class="impact-desc">increase in successful journey completion</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">5%</div>
+        <div class="impact-desc">conversion rate improvement via segmented insight</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">75→51%</div>
+        <div class="impact-desc">homepage bounce rate reduction</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">2&times;</div>
+        <div class="impact-desc">research functions built from scratch</div>
+      </div>
+    </div>
+
+    <!-- CASE STUDY CARDS -->
+    <div class="work-grid">
+      <div class="card">
+        <span class="card-tag">Experimentation · CRO</span>
+        <h3 class="card-title">Building an end-to-end experimentation engine</h3>
+        <p class="card-body">Led the full experimentation programme at a fintech platform launch, feeding it with continuous qualitative discovery to generate hypotheses grounded in actual user behaviour rather than guesswork. Ran A/B and multivariate tests across web, app and platform, iterating based on what the data said rather than what stakeholders assumed.</p>
+        <div class="card-metrics">
+          <div class="metric"><span class="metric-label">Bounce rate</span><span class="metric-value">75% → 51%</span></div>
+          <div class="metric"><span class="metric-label">CTA clickthrough</span><span class="metric-value">3.17% → 8.44%</span></div>
+          <div class="metric"><span class="metric-label">Scroll depth</span><span class="metric-value">15% → 26%</span></div>
+          <div class="metric"><span class="metric-label">Journey completion</span><span class="metric-value">+24%</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Mixed-Methods · Segmentation</span>
+        <h3 class="card-title">Reaching the users who had already left</h3>
+        <p class="card-body">Designed and ran a survey programme from scratch to target disengaged and hard-to-find customer segments — the users standard methods systematically miss. Surfaced distinct barriers across different groups that earlier research had flattened into one story. Changed product roadmaps and retention strategy based on what different segments actually needed.</p>
+        <div class="card-metrics">
+          <div class="metric"><span class="metric-label">Conversion improvement</span><span class="metric-value">+5%</span></div>
+          <div class="metric"><span class="metric-label">Method</span><span class="metric-value">Targeted survey + qual</span></div>
+          <div class="metric"><span class="metric-label">Outcome</span><span class="metric-value">Roadmap change</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Research Ops · Governance</span>
+        <h3 class="card-title">A research function, built from nothing</h3>
+        <p class="card-body">Joined an organisation with no research practice, no shared understanding of what research could contribute and active scepticism from commercial stakeholders. Built the ethical framework, consent processes, tool ecosystem and quality standards from scratch, then demonstrated value through findings that changed decisions. Turned sceptics into advocates.</p>
+        <div class="card-metrics">
+          <div class="metric"><span class="metric-label">Starting point</span><span class="metric-value">No research function</span></div>
+          <div class="metric"><span class="metric-label">Built</span><span class="metric-value">Ethics + ops + tooling</span></div>
+          <div class="metric"><span class="metric-label">Done twice</span><span class="metric-value">FXCM + Tradu</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise">
+    <p class="section-label">Methods &amp; Tools</p>
+    <h2 class="section-title">The full toolkit, applied with judgment.</h2>
+
+    <div class="expertise-grid">
+      <div class="expertise-item">
+        <div class="expertise-title">Qualitative Research</div>
+        <div class="expertise-list">In-depth interviews · Diary studies · Contextual inquiry · Usability testing · Card sorting · Concept testing · Moderated + unmoderated</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-title">Quantitative Research</div>
+        <div class="expertise-list">Survey design and analysis · Behavioural analytics · Segmentation · Funnel analysis · Statistical interpretation</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-title">Experimentation</div>
+        <div class="expertise-list">A/B testing · Multivariate testing · Hypothesis frameworks · CRO · Pre-defined success criteria · Post-release measurement</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-title">Research Operations</div>
+        <div class="expertise-list">Ethics frameworks · GDPR consent processes · Quality assurance · Peer review · Research repositories · Tool evaluation</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-title">Analysis</div>
+        <div class="expertise-list">Thematic analysis · Affinity mapping · AI-assisted synthesis · Multi-source insight integration · Behavioural data interpretation</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-title">Stakeholder</div>
+        <div class="expertise-list">C-suite presentation · Research evangelism · Agile delivery integration · Cross-functional alignment · Evidence-led culture change</div>
+      </div>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-chip">UserTesting</span>
+      <span class="tool-chip">Optimizely</span>
+      <span class="tool-chip">ContentSquare</span>
+      <span class="tool-chip">GA4</span>
+      <span class="tool-chip">Mixpanel</span>
+      <span class="tool-chip">Segment</span>
+      <span class="tool-chip">SurveyMonkey</span>
+      <span class="tool-chip">Tableau</span>
+      <span class="tool-chip">Figma</span>
+      <span class="tool-chip">Miro</span>
+      <span class="tool-chip">Jira</span>
+      <span class="tool-chip">Confluence</span>
+      <span class="tool-chip">SEMrush</span>
+      <span class="tool-chip">Opal AI</span>
+      <span class="tool-chip">Copilot AI</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Research as a way of thinking, not just a job.</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Started in a client-facing financial services role with no research function around her, introduced one anyway and never stopped building from there. What began as curiosity about why customers were struggling with complex products turned into five years of mixed-methods practice, two research functions built from scratch and a VP appointment before turning 30.</p>
+        <p>The belief at the centre of all of it: research is only worth doing if it changes what gets built. That means fighting for access to the right users, being honest when the data contradicts a decision already made, and finding the framing that makes evidence land with people who were not looking for it.</p>
+        <p>Outside work: competed as a rhythmic and aesthetic gymnast at European and World Championship level for fifteen years. Supports the Immune Deficiency Foundation, Walk for Home and the Alzheimer's Society Memory Walk.</p>
+      </div>
+
+      <div class="about-facts">
+        <div class="fact">
+          <span class="fact-label">Location</span>
+          <span class="fact-value">London, UK</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Current status</span>
+          <span class="fact-value">Open to new roles</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Career to date</span>
+          <span class="fact-value">FXCM · Tradu (Stratos Markets)</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Highest title</span>
+          <span class="fact-value">VP, Research and Experimentation</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Education</span>
+          <span class="fact-value">BSc Economics (Marketing), New Bulgarian University · CXL CRO Mini-degree</span>
+        </div>
+        <div class="fact">
+          <span class="fact-label">Languages</span>
+          <span class="fact-value">English (C1) · French (B2) · Bulgarian · Russian · Ukrainian</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Let's talk.</h2>
+    <div class="contact-block">
+      <p>Available for senior researcher, research lead and CRO specialist roles. Happy to talk about research challenges, potential collaborations or speculative conversations.</p>
+      <div class="contact-line">
+        <div class="contact-item">
+          <span class="contact-type">Email</span>
+          <span class="contact-val">anast.lup@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-type">Phone</span>
+          <span class="contact-val">+44 7596 831351</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-type">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/anastasiya-lupashko" target="_blank" rel="noopener">linkedin.com/in/anastasiya-lupashko</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">Anastasiya Lupashko &nbsp;·&nbsp; London, UK &nbsp;·&nbsp; 2026</div>
+</footer>
