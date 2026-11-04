@@ -1,0 +1,705 @@
+<title>Anastasiya Lupashko</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap">
+
+<style>
+/* ── tokens ──────────────────────────────────────────────────────── */
+:root {
+  --bg:        #F4F3F0;
+  --bg-card:   #FFFFFF;
+  --bg-dark:   #163840;
+  --fg:        #191714;
+  --fg-mid:    #58544E;
+  --fg-dim:    #96918A;
+  --fg-inv:    #EAE8E3;
+  --fg-inv-mid:#9EB5B9;
+  --accent:    #1A5C65;
+  --accent-lt: #E6F0F1;
+  --accent-inv:#5BB8C4;
+  --rule:      #DDD9D2;
+  --rule-dark: #254B52;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #111614;
+    --bg-card:   #1A201E;
+    --bg-dark:   #0D2126;
+    --fg:        #E8E5DF;
+    --fg-mid:    #96918A;
+    --fg-dim:    #58544E;
+    --fg-inv:    #E8E5DF;
+    --fg-inv-mid:#7BABB1;
+    --accent:    #5BB8C4;
+    --accent-lt: #0D2126;
+    --accent-inv:#5BB8C4;
+    --rule:      #2A2824;
+    --rule-dark: #254B52;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #111614;
+  --bg-card:   #1A201E;
+  --bg-dark:   #0D2126;
+  --fg:        #E8E5DF;
+  --fg-mid:    #96918A;
+  --fg-dim:    #58544E;
+  --fg-inv:    #E8E5DF;
+  --fg-inv-mid:#7BABB1;
+  --accent:    #5BB8C4;
+  --accent-lt: #0D2126;
+  --accent-inv:#5BB8C4;
+  --rule:      #2A2824;
+  --rule-dark: #254B52;
+  color-scheme: dark;
+}
+
+/* ── reset / base ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* ── layout ──────────────────────────────────────────────────────── */
+.wrap { max-width: 880px; margin: 0 auto; }
+
+/* ── nav ─────────────────────────────────────────────────────────── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 26px;
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--fg);
+  letter-spacing: 0.01em;
+}
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── hero ────────────────────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 48px;
+  align-items: start;
+  padding-block: 64px 56px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-left .eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: 22px;
+  color: var(--fg);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-bio {
+  font-size: 0.95rem;
+  color: var(--fg-mid);
+  line-height: 1.75;
+  max-width: 520px;
+}
+.hero-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+.aside-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 20px;
+  text-align: center;
+}
+.aside-num {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--fg);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.aside-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  line-height: 1.4;
+}
+
+/* ── dark band ───────────────────────────────────────────────────── */
+.dark-band {
+  background: var(--bg-dark);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  padding-block: 56px;
+  margin-block: 64px 0;
+}
+.dark-band .wrap-inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.dark-band .band-heading {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--fg-inv);
+  margin-bottom: 36px;
+}
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.approach-item {}
+.approach-item .num {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--accent-inv);
+  opacity: 0.6;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.approach-item h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-inv);
+  margin-bottom: 10px;
+}
+.approach-item p {
+  font-size: 0.88rem;
+  color: var(--fg-inv-mid);
+  line-height: 1.65;
+}
+
+/* ── section ─────────────────────────────────────────────────────── */
+section { margin-block: 64px; }
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--fg);
+  margin-bottom: 36px;
+  text-wrap: balance;
+}
+
+/* ── case cards ──────────────────────────────────────────────────── */
+.cases { display: grid; gap: 20px; }
+.case {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+.case-left {
+  background: var(--accent-lt);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.case-method {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.case-left h3 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.case-outcomes-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mini-outcome {}
+.mini-outcome .mo-num {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.mini-outcome .mo-label {
+  font-size: 0.75rem;
+  color: var(--fg-mid);
+  line-height: 1.4;
+}
+.case-right {
+  padding: 32px;
+}
+.case-right p {
+  font-size: 0.9rem;
+  color: var(--fg-mid);
+  line-height: 1.72;
+  margin-bottom: 14px;
+}
+.case-right p:last-child { margin-bottom: 0; }
+.method-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.method-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--fg-mid);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+/* ── capabilities ────────────────────────────────────────────────── */
+.caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.cap {
+  border-top: 2px solid var(--accent);
+  padding-top: 20px;
+}
+.cap h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+.cap p {
+  font-size: 0.87rem;
+  color: var(--fg-mid);
+  line-height: 1.65;
+}
+
+/* ── tools ───────────────────────────────────────────────────────── */
+.tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.tool {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--fg-mid);
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 5px 12px;
+}
+
+/* ── contact ─────────────────────────────────────────────────────── */
+.contact-strip {
+  background: var(--bg-dark);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  padding-block: 48px;
+  margin-top: 64px;
+}
+.contact-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+.contact-strip h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--fg-inv);
+  margin-bottom: 8px;
+}
+.contact-strip p {
+  font-size: 0.88rem;
+  color: var(--fg-inv-mid);
+}
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: right;
+}
+.contact-item strong {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-inv-mid);
+  margin-bottom: 1px;
+}
+.contact-item span {
+  font-size: 0.85rem;
+  color: var(--fg-inv);
+}
+
+/* ── footer ──────────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding-block: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--fg-dim);
+}
+
+/* ── responsive ──────────────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-aside { flex-direction: row; flex-wrap: wrap; }
+  .aside-stat { flex: 1 1 120px; }
+  .approach-grid { grid-template-columns: 1fr; gap: 24px; }
+  .case { grid-template-columns: 1fr; }
+  .case-left { padding: 24px; }
+  .caps { grid-template-columns: 1fr 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .contact-items { text-align: left; }
+}
+@media (max-width: 420px) {
+  .caps { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+
+<div class="wrap">
+
+  <nav>
+    <span class="nav-name">Anastasiya Lupashko</span>
+    <ul class="nav-links">
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">Qualitative Research &amp; Insights</p>
+      <h1>Research that earns <em>trust</em> before it earns agreement.</h1>
+      <p class="hero-bio">
+        Five years designing and delivering mixed-methods research programmes in a complex, regulated environment.
+        Primary strength in qualitative research: in-depth interviews, diary studies, moderated sessions, concept testing.
+        A career built on understanding how people make decisions in unfamiliar, high-stakes situations, and translating
+        that understanding into insight that changes what clients and stakeholders do next.
+      </p>
+    </div>
+    <div class="hero-aside">
+      <div class="aside-stat">
+        <span class="aside-num">5+</span>
+        <span class="aside-label">Years mixed-methods research</span>
+      </div>
+      <div class="aside-stat">
+        <span class="aside-num">2</span>
+        <span class="aside-label">Research functions built from zero</span>
+      </div>
+      <div class="aside-stat">
+        <span class="aside-num">Multi</span>
+        <span class="aside-label">Market programmes across EU, UK, APAC, US</span>
+      </div>
+      <div class="aside-stat">
+        <span class="aside-num">C-suite</span>
+        <span class="aside-label">Level insight delivery and advisory</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="dark-band" id="approach">
+  <div class="wrap-inner">
+    <h2 class="band-heading">How the work gets done</h2>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <div class="num">01</div>
+        <h3>Qualitative first</h3>
+        <p>Qualitative research is the foundation. The numbers tell you what is happening;
+        depth interviews and moderated sessions tell you why. Combining both produces insight
+        that actually explains behaviour rather than just describing it.</p>
+      </div>
+      <div class="approach-item">
+        <div class="num">02</div>
+        <h3>End-to-end delivery</h3>
+        <p>From brief and proposal through discussion guide design, recruitment, fieldwork,
+        analysis and reporting. Comfortable managing third-party suppliers, coordinating
+        stakeholders and running multiple projects simultaneously against tight deadlines.</p>
+      </div>
+      <div class="approach-item">
+        <div class="num">03</div>
+        <h3>Insight that lands</h3>
+        <p>A research report that sits unread has not done its job. Known for translating
+        complex findings into clear, compelling outputs that clients and stakeholders act on,
+        and for building the relationships that make that possible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="work">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">Research programmes and what they produced</h2>
+    <div class="cases">
+
+      <div class="case">
+        <div class="case-left">
+          <span class="case-method">Qual-Led Longitudinal Study</span>
+          <h3>How people really experience a new product over time</h3>
+          <div class="case-outcomes-mini">
+            <div class="mini-outcome">
+              <span class="mo-num">Exec</span>
+              <span class="mo-label">Level presentation; changed product investment priorities</span>
+            </div>
+            <div class="mini-outcome">
+              <span class="mo-num">Multi-wave</span>
+              <span class="mo-label">Repeat interviews tracking the same cohort over months</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-right">
+          <p>The brief was to understand why users who signed up for a complex financial platform were not
+          completing the onboarding journey. Standard usability testing gave partial answers. The
+          real question was not what broke in the moment, but how confidence and understanding developed,
+          or failed to develop, over time.</p>
+          <p>Designed and ran a longitudinal programme combining repeat in-depth interviews, diary studies
+          and behavioural analytics, tracking the same cohort across multiple months. Surfaced a pattern
+          of gradual disengagement that cross-sectional methods had been missing entirely: the problem
+          was not a single friction point but an accumulation of small uncertainties that eroded trust.</p>
+          <p>Findings were presented at executive level and directly redirected product investment away
+          from surface-level fixes toward the trust and onboarding architecture underneath them.</p>
+          <div class="method-tags">
+            <span class="method-tag">Depth interviews</span>
+            <span class="method-tag">Diary studies</span>
+            <span class="method-tag">Longitudinal design</span>
+            <span class="method-tag">Behavioural analytics</span>
+            <span class="method-tag">Thematic analysis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-left">
+          <span class="case-method">Segmentation Survey Programme</span>
+          <h3>Reaching the audiences standard surveys could not find</h3>
+          <div class="case-outcomes-mini">
+            <div class="mini-outcome">
+              <span class="mo-num">+5%</span>
+              <span class="mo-label">Conversion improvement driven by insight-led roadmap changes</span>
+            </div>
+            <div class="mini-outcome">
+              <span class="mo-num">3+</span>
+              <span class="mo-label">Distinct barrier profiles identified across disengaged segments</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-right">
+          <p>Standard research panels kept returning responses from the most engaged users. The customers
+          the business most needed to understand, those who had signed up but never converted, or who
+          had dropped off silently, were invisible to conventional sampling approaches.</p>
+          <p>Designed a targeted survey programme from scratch using alternative recruitment channels
+          specifically selected to reach disengaged segments. Adapted question design for low-engagement
+          respondents, ran the analysis to identify distinct barrier profiles and followed quantitative
+          findings with qualitative depth interviews to explain the patterns the data surfaced.</p>
+          <p>The combined insight changed how three separate product features were prioritised and
+          contributed to a 5% improvement in conversion rate. The programme became a standing
+          component of the quarterly research calendar.</p>
+          <div class="method-tags">
+            <span class="method-tag">Survey design</span>
+            <span class="method-tag">Segmentation analysis</span>
+            <span class="method-tag">Qual follow-up</span>
+            <span class="method-tag">Recruitment strategy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-left">
+          <span class="case-method">Concept &amp; Prototype Testing</span>
+          <h3>Testing new product propositions before they were built</h3>
+          <div class="case-outcomes-mini">
+            <div class="mini-outcome">
+              <span class="mo-num">Multiple</span>
+              <span class="mo-label">Product decisions redirected before costly development began</span>
+            </div>
+            <div class="mini-outcome">
+              <span class="mo-num">Multi-market</span>
+              <span class="mo-label">Studies run across UK, EU and APAC audiences</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-right">
+          <p>Product and marketing teams regularly brought propositions to research late, when development
+          was already underway. The challenge was establishing a research rhythm that caught problems
+          earlier, when changes were still cheap.</p>
+          <p>Built and ran a concept and prototype testing practice that sat at the front end of the
+          product development process. Combined moderated usability sessions, unmoderated prototype
+          testing and structured concept evaluation across diverse audience segments in multiple markets.</p>
+          <p>On several occasions, early testing surfaced fundamental mismatches between the proposition
+          and audience expectations that, if unaddressed, would have required significant rework after
+          launch. The practice became the standard gate before any new feature entered development.</p>
+          <div class="method-tags">
+            <span class="method-tag">Moderated sessions</span>
+            <span class="method-tag">Concept testing</span>
+            <span class="method-tag">Prototype testing</span>
+            <span class="method-tag">Multi-market</span>
+            <span class="method-tag">UserTesting platform</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="expertise">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">What I bring to research delivery</h2>
+    <div class="caps">
+      <div class="cap">
+        <h3>Qualitative Methods</h3>
+        <p>In-depth interviews, diary studies, focus group and IDI moderation, usability testing,
+        contextual and observational research, concept and prototype testing. Primary strength
+        with qualitative depth; comfortable with 80/20 qual-quant programmes.</p>
+      </div>
+      <div class="cap">
+        <h3>Project Management</h3>
+        <p>End-to-end delivery from brief through reporting. Supplier management, discussion guide
+        design, recruitment coordination, fieldwork oversight, analysis, and client debrief.
+        Multiple concurrent projects managed against tight deadlines.</p>
+      </div>
+      <div class="cap">
+        <h3>Client Communication</h3>
+        <p>Builds trusted relationships through consistent, clear delivery and genuine curiosity
+        about the brief. Adapts communication style and output format for each audience.
+        Known for producing reports that clients act on, not file away.</p>
+      </div>
+      <div class="cap">
+        <h3>Regulated Environments</h3>
+        <p>Five years working in a strictly regulated financial services context. GDPR-compliant
+        consent frameworks, ethical governance, participant data protection and research
+        compliance built from scratch and maintained throughout.</p>
+      </div>
+      <div class="cap">
+        <h3>Insight Synthesis</h3>
+        <p>Thematic analysis, cross-method synthesis, AI-assisted analysis tools.
+        Strong instinct for the finding that sits across the data sources and for
+        framing insight in terms that connect to client strategy.</p>
+      </div>
+      <div class="cap">
+        <h3>Research Infrastructure</h3>
+        <p>Built full research operations twice from zero: tool ecosystems, governance standards,
+        peer review frameworks, research repositories and knowledge management.
+        Thorough and fast to learn new platforms and methods.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Tools</p>
+    <h2 class="section-title" style="margin-bottom:24px">Platforms and software</h2>
+    <div class="tools">
+      <span class="tool">UserTesting</span>
+      <span class="tool">SurveyMonkey</span>
+      <span class="tool">ContentSquare</span>
+      <span class="tool">GA4</span>
+      <span class="tool">Mixpanel</span>
+      <span class="tool">Optimizely</span>
+      <span class="tool">Segment</span>
+      <span class="tool">Tableau</span>
+      <span class="tool">Opal AI</span>
+      <span class="tool">Copilot AI</span>
+      <span class="tool">Figma</span>
+      <span class="tool">Miro</span>
+      <span class="tool">Jira</span>
+      <span class="tool">Confluence</span>
+      <span class="tool">Excel</span>
+    </div>
+  </section>
+
+</div>
+
+<div class="contact-strip" id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2>Open to new opportunities</h2>
+      <p>Based in London. Available for roles in qualitative and mixed-methods research and insights.</p>
+    </div>
+    <div class="contact-items">
+      <div class="contact-item">
+        <strong>Email</strong>
+        <span>anast.lup@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <strong>Location</strong>
+        <span>London, UK</span>
+      </div>
+      <div class="contact-item">
+        <strong>LinkedIn</strong>
+        <span>linkedin.com/in/anastasiyalupashko</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <span>Anastasiya Lupashko &mdash; Research &amp; Insights</span>
+    <span>London, UK &middot; 2026</span>
+  </footer>
+</div>
