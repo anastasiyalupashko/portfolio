@@ -1,0 +1,635 @@
+<title>Anastasiya Lupashko</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+/* ── tokens ──────────────────────────────────────────────────────── */
+:root {
+  --bg:       #F7F5F0;
+  --bg-card:  #FFFFFF;
+  --fg:       #181714;
+  --fg-mid:   #5A5751;
+  --fg-dim:   #9A958F;
+  --accent:   #1D4E35;
+  --accent-lt:#EAF2ED;
+  --rule:     #DDD9D2;
+  --mono:     'Inter', system-ui, sans-serif;
+  --serif:    'Cormorant Garamond', Georgia, serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:       #141210;
+    --bg-card:  #1E1C19;
+    --fg:       #EDE9E2;
+    --fg-mid:   #9A958F;
+    --fg-dim:   #5A5751;
+    --accent:   #4CAF7D;
+    --accent-lt:#0F2318;
+    --rule:     #2C2A26;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:       #141210;
+  --bg-card:  #1E1C19;
+  --fg:       #EDE9E2;
+  --fg-mid:   #9A958F;
+  --fg-dim:   #5A5751;
+  --accent:   #4CAF7D;
+  --accent-lt:#0F2318;
+  --rule:     #2C2A26;
+  color-scheme: dark;
+}
+
+/* ── reset / base ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.6;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* ── layout wrapper ──────────────────────────────────────────────── */
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── nav ─────────────────────────────────────────────────────────── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── hero ────────────────────────────────────────────────────────── */
+.hero {
+  padding-block: 72px 56px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: var(--fg);
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--fg-mid);
+}
+.hero-bio {
+  max-width: 560px;
+  color: var(--fg-mid);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-lt);
+  padding: 5px 11px;
+  border-radius: 2px;
+}
+
+/* ── metrics strip ───────────────────────────────────────────────── */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-block: 56px;
+}
+.metric {
+  background: var(--bg);
+  padding: 32px 20px;
+  text-align: center;
+}
+.metric-num {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--fg);
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.metric-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  line-height: 1.4;
+}
+
+/* ── section header ──────────────────────────────────────────────── */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.section-header h2 {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--fg);
+}
+.section-header .rule-line {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+section { margin-bottom: 72px; }
+
+/* ── insight work (case studies) ─────────────────────────────────── */
+.work-grid {
+  display: grid;
+  gap: 24px;
+}
+.case-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.case-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.case-type {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.case-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.case-context {
+  font-size: 0.82rem;
+  color: var(--fg-dim);
+  letter-spacing: 0.03em;
+}
+.case-body p {
+  font-size: 0.93rem;
+  color: var(--fg-mid);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.case-body p:last-child { margin-bottom: 0; }
+.case-outcomes {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.outcome-row {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.outcome-num {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 56px;
+  font-variant-numeric: tabular-nums;
+}
+.outcome-text {
+  font-size: 0.8rem;
+  color: var(--fg-mid);
+  line-height: 1.5;
+}
+
+/* ── capabilities ────────────────────────────────────────────────── */
+.caps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.cap-cell {
+  background: var(--bg);
+  padding: 28px 24px;
+}
+.cap-cell h3 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.cap-cell p {
+  font-size: 0.88rem;
+  color: var(--fg-mid);
+  line-height: 1.65;
+}
+
+/* ── tools ───────────────────────────────────────────────────────── */
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tool-chip {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--fg-mid);
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+
+/* ── contact ─────────────────────────────────────────────────────── */
+.contact-block {
+  background: var(--accent-lt);
+  border: 1px solid var(--accent);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.contact-block h2 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+.contact-block p {
+  font-size: 0.9rem;
+  color: var(--fg-mid);
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+}
+.contact-line {
+  font-size: 0.85rem;
+  color: var(--fg-mid);
+}
+.contact-line strong {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 2px;
+}
+
+/* ── footer ──────────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding-block: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+footer p {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+}
+
+/* ── responsive ──────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .case-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .caps-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-block {
+    grid-template-columns: 1fr;
+  }
+  .contact-details {
+    text-align: left;
+  }
+  .nav-links { gap: 16px; }
+}
+@media (max-width: 400px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2.2rem; }
+}
+</style>
+
+<div class="wrap">
+
+  <nav>
+    <span class="nav-name">Anastasiya Lupashko</span>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#capabilities">Expertise</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-eyebrow">Research &amp; Insights Professional</p>
+    <h1>Insight that moves people <em>to act.</em></h1>
+    <p class="hero-bio">
+      Five years building mixed-methods research programmes from the ground up at a consumer-facing financial platform.
+      From survey design to depth interviews, from behavioural analytics to C-suite presentations — the work has always
+      been the same: surface what the data is not yet saying, and make it impossible to ignore.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Mixed-Methods Research</span>
+      <span class="tag">Quantitative Research</span>
+      <span class="tag">Insight Strategy</span>
+      <span class="tag">End-to-End Delivery</span>
+      <span class="tag">Stakeholder Communication</span>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-num">+24%</div>
+      <div class="metric-label">Journey completion improvement</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">+5%</div>
+      <div class="metric-label">Conversion rate improvement</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">75&rarr;51%</div>
+      <div class="metric-label">Bounce rate reduction</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">2</div>
+      <div class="metric-label">Research functions built from zero</div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="section-header">
+      <h2>Insight Work</h2>
+      <span class="rule-line"></span>
+    </div>
+    <div class="work-grid">
+
+      <div class="case-card">
+        <div class="case-meta">
+          <span class="case-type">Survey Research &amp; Segmentation</span>
+          <h3 class="case-title">Reaching the audiences no survey had found before</h3>
+          <span class="case-context">Tradu / Stratos Markets &mdash; 2024 to 2026</span>
+          <div class="case-outcomes">
+            <div class="outcome-row">
+              <span class="outcome-num">+5%</span>
+              <span class="outcome-text">Conversion rate improvement attributed to insight-led roadmap changes</span>
+            </div>
+            <div class="outcome-row">
+              <span class="outcome-num">3+</span>
+              <span class="outcome-text">Distinct barrier profiles identified across disengaged segments</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <p>Standard survey panels kept returning the same engaged users. The disengaged customers — the ones
+          who had registered but never converted, or who had converted and gone quiet — were invisible to conventional
+          approaches.</p>
+          <p>Designed a targeted survey programme from scratch that reached those specific segments through
+          alternative recruitment channels, adapted question design for low-engagement respondents and ran
+          the analysis to identify distinct barrier profiles that did not exist in the existing data.</p>
+          <p>The findings changed product roadmap priorities and fed directly into a 5% improvement in
+          conversion rate. The programme became a standing component of the quarterly insight calendar.</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-meta">
+          <span class="case-type">Longitudinal Mixed-Methods Programme</span>
+          <h3 class="case-title">Understanding product adoption over time, not just at a moment</h3>
+          <span class="case-context">Tradu / Stratos Markets &mdash; 2024 to 2026</span>
+          <div class="case-outcomes">
+            <div class="outcome-row">
+              <span class="outcome-num">Multiple</span>
+              <span class="outcome-text">Product investment decisions influenced by longitudinal findings</span>
+            </div>
+            <div class="outcome-row">
+              <span class="outcome-num">Executive</span>
+              <span class="outcome-text">Level presentation of findings to C-suite and board</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <p>Point-in-time research kept answering the wrong question. What the product team needed was
+          not how customers felt on day one, but how their relationship with the product changed over
+          weeks and months of use.</p>
+          <p>Built and ran a longitudinal programme combining diary studies, repeat qualitative interviews and
+          quantitative tracking to follow the same cohorts over time. Surfaced adoption barriers and behavioural
+          patterns that cross-sectional methods had been missing entirely.</p>
+          <p>Findings were presented at executive level and directly influenced priorities and investment decisions
+          across product and commercial functions.</p>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-meta">
+          <span class="case-type">Insight Infrastructure Build</span>
+          <h3 class="case-title">Building a research function where there was none</h3>
+          <span class="case-context">FXCM &mdash; 2021 to 2023</span>
+          <div class="case-outcomes">
+            <div class="outcome-row">
+              <span class="outcome-num">From 0</span>
+              <span class="outcome-text">Research function built, governed and scaled</span>
+            </div>
+            <div class="outcome-row">
+              <span class="outcome-num">Full stack</span>
+              <span class="outcome-text">Qual, quant, analytics and experimentation running concurrently</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <p>Joined a marketing team with no research practice, no consent frameworks, no tooling and
+          no established methods for understanding customers. Left it with a fully operational
+          mixed-methods function that influenced product, marketing and commercial decisions.</p>
+          <p>Introduced structured research practices, built ethical consent frameworks and governance
+          standards compliant with GDPR, onboarded a tool ecosystem in phases and ran qualitative
+          and quantitative programmes simultaneously across multiple markets and customer segments.</p>
+          <p>The function scaled from one person doing informal research to a VP-level capability
+          sitting at the executive table.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <div class="section-header">
+      <h2>Research Expertise</h2>
+      <span class="rule-line"></span>
+    </div>
+    <div class="caps-grid">
+      <div class="cap-cell">
+        <h3>Quantitative Research</h3>
+        <p>Survey design and analysis across diverse audiences, including hard-to-reach and disengaged segments.
+        Sampling strategy, questionnaire construction, statistical analysis and translating findings into
+        commercially meaningful recommendations.</p>
+      </div>
+      <div class="cap-cell">
+        <h3>Qualitative Research</h3>
+        <p>In-depth interviews, diary studies, usability testing, moderated and unmoderated sessions,
+        concept testing and contextual research. Strong instinct for when each method serves the question
+        and when to combine them.</p>
+      </div>
+      <div class="cap-cell">
+        <h3>End-to-End Delivery</h3>
+        <p>Full project lifecycle from brief and proposal through fieldwork, analysis, reporting and debrief.
+        Experienced in managing third-party research suppliers, coordinating internal stakeholders and
+        delivering multiple concurrent projects against tight deadlines.</p>
+      </div>
+      <div class="cap-cell">
+        <h3>Insight Communication</h3>
+        <p>Known for making research land with audiences who were not necessarily looking for it.
+        Adapts framing and format for every level, from delivery teams to C-suite, and produces
+        outputs that drive decisions rather than sit in a deck.</p>
+      </div>
+      <div class="cap-cell">
+        <h3>Synthesis &amp; Analysis</h3>
+        <p>Combines behavioural analytics, survey data, qualitative findings and AI-assisted synthesis
+        to surface insight that sits across method boundaries. Strong instinct for what the data
+        is not yet saying.</p>
+      </div>
+      <div class="cap-cell">
+        <h3>Research Operations</h3>
+        <p>GDPR-compliant consent frameworks, ethical governance, quality assurance, peer review,
+        research repositories and tool ecosystem management. Built from scratch twice across
+        different organisational contexts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2>Tools &amp; Platforms</h2>
+      <span class="rule-line"></span>
+    </div>
+    <div class="tools-list">
+      <span class="tool-chip">UserTesting</span>
+      <span class="tool-chip">SurveyMonkey</span>
+      <span class="tool-chip">GA4</span>
+      <span class="tool-chip">ContentSquare</span>
+      <span class="tool-chip">Mixpanel</span>
+      <span class="tool-chip">Optimizely</span>
+      <span class="tool-chip">Segment</span>
+      <span class="tool-chip">Tableau</span>
+      <span class="tool-chip">SEMrush</span>
+      <span class="tool-chip">Figma</span>
+      <span class="tool-chip">Miro</span>
+      <span class="tool-chip">Opal AI</span>
+      <span class="tool-chip">Copilot AI</span>
+      <span class="tool-chip">Jira</span>
+      <span class="tool-chip">Confluence</span>
+      <span class="tool-chip">Excel</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-block">
+      <div>
+        <h2>Open to new opportunities</h2>
+        <p>Based in London. Available for roles in research, insight and consumer understanding.</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-line">
+          <strong>Email</strong>
+          anast.lup@gmail.com
+        </div>
+        <div class="contact-line">
+          <strong>Location</strong>
+          London, UK
+        </div>
+        <div class="contact-line">
+          <strong>LinkedIn</strong>
+          linkedin.com/in/anastasiyalupashko
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Anastasiya Lupashko &mdash; Research &amp; Insights Professional</p>
+    <p>London, UK &nbsp;&middot;&nbsp; 2026</p>
+  </footer>
+
+</div>
