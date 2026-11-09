@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anastasiya Lupashko — Research Portfolio for IG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:     #0C1E35;
+  --navy-mid: #142B4A;
+  --navy-lt:  #1E3A5F;
+  --orange:   #FF5900;
+  --orange-lt:#FFF0E8;
+  --white:    #FFFFFF;
+  --offwhite: #F7F5F2;
+  --rule:     #E8E4DE;
+  --fg:       #111827;
+  --fg-mid:   #374151;
+  --fg-dim:   #9CA3AF;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.6;
+  color: var(--fg);
+  background: var(--white);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+@page { size: A4; margin: 0; }
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+.page:last-child { page-break-after: avoid; }
+
+/* ── COVER ── */
+.cover {
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  min-height: 297mm;
+}
+.cover-stripe { background: var(--orange); height: 5mm; }
+.cover-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16mm;
+}
+.cover-top { flex: 1; display: flex; align-items: flex-end; padding-bottom: 12mm; }
+.cover-eyebrow {
+  font-size: 7pt;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.cover-mid { padding-bottom: 14mm; }
+.cover-name {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 44pt;
+  color: var(--white);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 4mm;
+}
+.cover-role {
+  font-size: 10.5pt;
+  font-weight: 300;
+  color: var(--orange);
+  letter-spacing: 0.04em;
+  margin-bottom: 10mm;
+}
+.cover-statement {
+  font-size: 9pt;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.85;
+  max-width: 130mm;
+  margin-bottom: 14mm;
+}
+.cover-statement strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+.cover-divider { height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 10mm; }
+.cover-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 14mm;
+}
+.stat-num {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 22pt;
+  color: var(--orange);
+  display: block;
+  line-height: 1;
+  margin-bottom: 2mm;
+}
+.stat-label {
+  font-size: 6.5pt;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10mm;
+}
+.cover-contact { display: flex; gap: 8mm; }
+.cover-contact span { font-size: 7pt; color: rgba(255,255,255,0.3); }
+.cover-year { font-size: 7pt; color: rgba(255,255,255,0.15); }
+.cover-bottom-stripe { background: var(--orange); height: 2px; }
+
+/* ── INNER PAGES ── */
+.inner { background: var(--white); }
+
+.ph {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7mm 16mm 5mm;
+  border-bottom: 1px solid var(--rule);
+}
+.ph-name { font-size: 8pt; font-weight: 400; color: var(--fg-mid); }
+.ph-label {
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.ph-num { font-size: 7pt; color: var(--fg-dim); }
+
+.pc { padding: 9mm 16mm 10mm; }
+
+/* ── PROFILE ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 9mm;
+}
+.col-rule { background: var(--rule); }
+
+.profile-heading {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 20pt;
+  color: var(--fg);
+  line-height: 1.2;
+  margin-bottom: 5mm;
+}
+.profile-heading em { font-style: italic; color: var(--orange); }
+
+.profile-body {
+  font-size: 8.5pt;
+  color: var(--fg-mid);
+  line-height: 1.72;
+  margin-bottom: 3.5mm;
+}
+
+.kf-label {
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 4mm;
+}
+.kf-item {
+  display: flex;
+  gap: 3mm;
+  margin-bottom: 4mm;
+  align-items: flex-start;
+}
+.kf-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.kf-text { font-size: 8.5pt; color: var(--fg-mid); line-height: 1.6; }
+.kf-text strong { font-weight: 600; color: var(--fg); }
+
+/* ── SECTION LABEL ── */
+.sec-label {
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 2mm;
+}
+.sec-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 15pt;
+  color: var(--fg);
+  margin-bottom: 6mm;
+}
+
+/* ── CASE CARDS ── */
+.case {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  border: 1px solid var(--rule);
+  margin-bottom: 5mm;
+}
+.case:last-child { margin-bottom: 0; }
+.case-left {
+  background: var(--orange-lt);
+  padding: 7mm 6mm 7mm 7mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4mm;
+  border-right: 2px solid var(--orange);
+}
+.case-method {
+  font-size: 6pt;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.case-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 11pt;
+  line-height: 1.3;
+  color: var(--fg);
+}
+.case-minis { display: flex; flex-direction: column; gap: 4mm; }
+.mini-num {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 13pt;
+  color: var(--navy);
+  display: block;
+  line-height: 1;
+  margin-bottom: 1mm;
+}
+.mini-label { font-size: 7pt; color: var(--fg-dim); line-height: 1.35; }
+
+.case-right { padding: 7mm; }
+.case-body {
+  font-size: 8.5pt;
+  color: var(--fg-mid);
+  line-height: 1.68;
+  margin-bottom: 3mm;
+}
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-top: 4mm;
+  padding-top: 4mm;
+  border-top: 1px solid var(--rule);
+}
+.tag {
+  font-size: 6.5pt;
+  color: var(--fg-dim);
+  border: 0.75px solid var(--rule);
+  padding: 1.5px 5px;
+}
+
+/* ── CAPS ── */
+.caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-bottom: 7mm; }
+.cap { border-top: 1.5px solid var(--orange); padding-top: 3.5mm; }
+.cap-title {
+  font-size: 7pt;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--fg);
+  margin-bottom: 2mm;
+}
+.cap-body { font-size: 8.5pt; color: var(--fg-mid); line-height: 1.6; }
+
+/* ── TOOLS ── */
+.tools-label {
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 3mm;
+}
+.tools { display: flex; flex-wrap: wrap; gap: 2mm; }
+.tool {
+  font-size: 7.5pt;
+  color: var(--fg-mid);
+  border: 0.75px solid var(--rule);
+  padding: 2px 6px;
+}
+
+/* ── FOOTER ── */
+.pf {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 7mm;
+  background: var(--navy);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 16mm;
+}
+.pf-name { font-size: 6.5pt; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.pf-email { font-size: 6.5pt; color: rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="cover-stripe"></div>
+  <div class="cover-main">
+    <div class="cover-top">
+      <span class="cover-eyebrow">Head of Insights — Research Portfolio</span>
+    </div>
+    <div class="cover-mid">
+      <div class="cover-name">Anastasiya<br>Lupashko</div>
+      <div class="cover-role">Senior Insight Leader &nbsp;|&nbsp; Retail Financial Services &nbsp;|&nbsp; Mixed-Methods Research</div>
+      <p class="cover-statement">
+        Six years building insight and experimentation practices inside
+        <strong>two of IG's closest competitors</strong>, studying the same retail trading customer:
+        what drives their decision to commit, where their confidence breaks down,
+        and what separates the platforms that earn long-term loyalty from the ones that don't.
+        That knowledge is specific, current and immediately applicable.
+      </p>
+      <div class="cover-divider"></div>
+      <div class="cover-stats">
+        <div>
+          <span class="stat-num">6+</span>
+          <span class="stat-label">Years fintech insight leadership</span>
+        </div>
+        <div>
+          <span class="stat-num">75%</span>
+          <span class="stat-label">to 51% bounce rate improvement</span>
+        </div>
+        <div>
+          <span class="stat-num">+24%</span>
+          <span class="stat-label">Journey completion improvement</span>
+        </div>
+        <div>
+          <span class="stat-num">+5%</span>
+          <span class="stat-label">Conversion rate improvement</span>
+        </div>
+      </div>
+    </div>
+    <div class="cover-bottom">
+      <div class="cover-contact">
+        <span>anast.lup@gmail.com</span>
+        <span>London, UK</span>
+        <span>linkedin.com/in/anastasiyalupashko</span>
+      </div>
+      <span class="cover-year">2026</span>
+    </div>
+  </div>
+  <div class="cover-bottom-stripe"></div>
+</div>
+
+<!-- PAGE 2: PROFILE -->
+<div class="page inner" style="padding-bottom:9mm;">
+  <div class="ph">
+    <span class="ph-name">Anastasiya Lupashko</span>
+    <span class="ph-label">Profile</span>
+    <span class="ph-num">02</span>
+  </div>
+  <div class="pc">
+    <div class="two-col">
+      <div>
+        <h2 class="profile-heading">Six years studying <em>your customer</em> from the inside.</h2>
+        <p class="profile-body">
+          IG, FXCM and Tradu compete for the same retail trading customer. I spent six years at FXCM and Tradu
+          building the research and insight functions that studied that customer in depth: how they discover and
+          evaluate platforms, what builds enough trust to convert, how confidence with complex financial products
+          develops over time and what causes the relationships that looked like they were working to quietly break down.
+        </p>
+        <p class="profile-body">
+          The insight I carry into IG is not analogous experience from an adjacent sector. It is specific knowledge
+          of the same market, the same customer segments and the same decision-making dynamics you are trying to
+          understand. Built from scratch, inside two organisations that had none of it before I arrived.
+        </p>
+        <p class="profile-body">
+          Alongside that domain depth I bring a full mixed-methods toolkit: longitudinal qualitative research,
+          primary survey programmes designed to reach segments that standard panels miss, behavioural analytics and
+          experimentation. I have owned insight agendas at VP level, presented to and challenged executive and C-suite
+          stakeholders and built the kind of trusted relationships with marketing, product and commercial teams that
+          mean research gets brought into decisions early. I use AI tools including Opal AI and Copilot as a genuine
+          working practice and am curious about where that continues to go.
+        </p>
+      </div>
+      <div class="col-rule"></div>
+      <div>
+        <p class="kf-label">What I bring to IG</p>
+        <div class="kf-item">
+          <div class="kf-dot"></div>
+          <span class="kf-text"><strong>Competitor market knowledge.</strong> Six years at FXCM and Tradu studying the retail trading customer: acquisition behaviour, trust formation, platform adoption, retention drivers and competitive switching.</span>
+        </div>
+        <div class="kf-item">
+          <div class="kf-dot"></div>
+          <span class="kf-text"><strong>Insight leadership at VP level.</strong> Owned the full insight and experimentation agenda across product ecosystems, sitting on leadership teams and challenging decisions with evidence at executive and C-suite level.</span>
+        </div>
+        <div class="kf-item">
+          <div class="kf-dot"></div>
+          <span class="kf-text"><strong>Built from scratch.</strong> Created research functions, ethical frameworks, governance, tool ecosystems and insight processes in environments where none existed. Experience building capability that outlasts any single project.</span>
+        </div>
+        <div class="kf-item">
+          <div class="kf-dot"></div>
+          <span class="kf-text"><strong>Mixed-methods rigour.</strong> IDIs, diary studies, surveys, usability testing, behavioural analytics, A/B and multivariate experimentation. Chooses methods for the question, not the other way around.</span>
+        </div>
+        <div class="kf-item">
+          <div class="kf-dot"></div>
+          <span class="kf-text"><strong>Turning sceptics into advocates.</strong> Track record of embedding evidence-based decision-making in organisations that believed they were already customer-first. Known for making insight land with people who were not looking for it.</span>
+        </div>
+        <div class="kf-item">
+          <div class="kf-dot"></div>
+          <span class="kf-text"><strong>AI-native practice.</strong> Opal AI and Copilot integrated into synthesis and analysis as working practice. Curious about emerging methods and committed to sharing what works.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-name">Anastasiya Lupashko</span>
+    <span class="pf-email">anast.lup@gmail.com</span>
+  </div>
+</div>
+
+<!-- PAGE 3: CASE STUDIES 1 & 2 -->
+<div class="page inner" style="padding-bottom:9mm;">
+  <div class="ph">
+    <span class="ph-name">Anastasiya Lupashko</span>
+    <span class="ph-label">Selected Work</span>
+    <span class="ph-num">03</span>
+  </div>
+  <div class="pc">
+    <p class="sec-label">Case Studies</p>
+    <h2 class="sec-title">Understanding what drives the numbers</h2>
+
+    <div class="case">
+      <div class="case-left">
+        <span class="case-method">Longitudinal Qualitative + Behavioural Analytics</span>
+        <span class="case-title">How trust builds with a new financial platform, and where it quietly breaks down</span>
+        <div class="case-minis">
+          <div>
+            <span class="mini-num">Multi-wave</span>
+            <span class="mini-label">Same cohort tracked over months</span>
+          </div>
+          <div>
+            <span class="mini-num">+24%</span>
+            <span class="mini-label">Journey completion after insight-led changes</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-right">
+        <p class="case-body">
+          Acquisition metrics were healthy. The problem was that customers who looked engaged after onboarding
+          were quietly disengaging weeks later, before the behaviours that predict long-term retention had formed.
+          Standard usability testing told us where people stopped in a flow. It could not tell us why their
+          confidence was eroding in the weeks between sessions.
+        </p>
+        <p class="case-body">
+          Designed and ran a longitudinal programme tracking the same cohort across multiple months through
+          diary studies and repeat in-depth interviews, mapping how trust and confidence developed or
+          deteriorated over time. Cross-referenced with behavioural analytics to identify the moments where
+          the lived experience diverged from what the platform data suggested was happening.
+        </p>
+        <p class="case-body">
+          Surfaced an accumulation effect: not any single friction point but a pattern of small, unresolved
+          uncertainties that compounded over time. Findings directly changed product investment priorities
+          and contributed to a 24% improvement in journey completion. The methodology became a standing
+          part of the research calendar.
+        </p>
+        <div class="case-tags">
+          <span class="tag">Longitudinal design</span>
+          <span class="tag">Diary studies</span>
+          <span class="tag">IDIs</span>
+          <span class="tag">Behavioural analytics</span>
+          <span class="tag">Thematic analysis</span>
+          <span class="tag">Opal AI synthesis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-left">
+        <span class="case-method">Primary Survey + Segmentation + Qual Follow-up</span>
+        <span class="case-title">Reaching the customer segments that standard research methods could not find</span>
+        <div class="case-minis">
+          <div>
+            <span class="mini-num">+5%</span>
+            <span class="mini-label">Conversion improvement driven by insight</span>
+          </div>
+          <div>
+            <span class="mini-num">3+</span>
+            <span class="mini-label">Distinct barrier profiles identified</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-right">
+        <p class="case-body">
+          Marketing teams knew certain customer segments were not converting at the rate the acquisition
+          economics required. Existing research told them nothing about why: disengaged customers
+          don't respond to standard recruitment panels, and the funnel data described the behaviour
+          without explaining it.
+        </p>
+        <p class="case-body">
+          Built a primary survey programme from scratch using alternative recruitment channels designed
+          specifically to reach disengaged and hard-to-find segments. Adapted question design for
+          low-engagement respondents, ran segmentation analysis to surface distinct barrier profiles
+          and followed up with qualitative interviews to explain the patterns the survey had revealed.
+          Linked findings back to funnel and cohort data to test whether the barriers identified in
+          research matched observed drop-off patterns.
+        </p>
+        <p class="case-body">
+          Three distinct barrier profiles emerged, each requiring a different marketing and product
+          response. Changes driven by the insight contributed to a 5% improvement in conversion and
+          the programme became a standing element of the quarterly insight calendar.
+        </p>
+        <div class="case-tags">
+          <span class="tag">Survey design</span>
+          <span class="tag">Segmentation</span>
+          <span class="tag">Funnel analysis</span>
+          <span class="tag">Cohort data</span>
+          <span class="tag">Qual follow-up</span>
+          <span class="tag">Recruitment strategy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-name">Anastasiya Lupashko</span>
+    <span class="pf-email">anast.lup@gmail.com</span>
+  </div>
+</div>
+
+<!-- PAGE 4: CASE STUDY 3 + CAPABILITIES -->
+<div class="page inner" style="padding-bottom:9mm;">
+  <div class="ph">
+    <span class="ph-name">Anastasiya Lupashko</span>
+    <span class="ph-label">Work and Expertise</span>
+    <span class="ph-num">04</span>
+  </div>
+  <div class="pc">
+
+    <div class="case" style="margin-bottom:7mm;">
+      <div class="case-left">
+        <span class="case-method">Experimentation Programme</span>
+        <span class="case-title">Running an insight-fed experimentation programme that moved the numbers</span>
+        <div class="case-minis">
+          <div>
+            <span class="mini-num">75% to 51%</span>
+            <span class="mini-label">Homepage bounce rate improvement</span>
+          </div>
+          <div>
+            <span class="mini-num">3.17% to 8.44%</span>
+            <span class="mini-label">CTA clickthrough improvement</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-right">
+        <p class="case-body">
+          The business had run experiments before. The problem was that test ideas were generated from
+          opinions rather than evidence, win rates were low, and the programme had no mechanism for
+          learning from failures. Fixing it required not just better test design but a different
+          relationship between research and experimentation.
+        </p>
+        <p class="case-body">
+          Built and ran an end-to-end experimentation programme fed continuously by qualitative and
+          quantitative research. Qualitative insight generated the hypotheses; behavioural analytics
+          identified where to test them; A/B and multivariate experiments validated or disproved
+          them at scale. When tests failed, the finding went back into the research loop rather than
+          being discarded. When tests won, the qualitative context explained why and informed
+          the next round of iteration.
+        </p>
+        <p class="case-body">
+          Over the programme's lifetime: homepage bounce rate from 75% to 51%, CTA clickthrough
+          from 3.17% to 8.44%, scroll depth from 15% to 26%, contributing to a 24% increase in
+          successful journey completion. Presented results and strategic implications at C-suite
+          level on a regular basis.
+        </p>
+        <div class="case-tags">
+          <span class="tag">Hypothesis development</span>
+          <span class="tag">A/B testing</span>
+          <span class="tag">Multivariate testing</span>
+          <span class="tag">Funnel analysis</span>
+          <span class="tag">Optimizely</span>
+          <span class="tag">ContentSquare</span>
+          <span class="tag">GA4</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="sec-label">Expertise</p>
+    <h2 class="sec-title" style="margin-bottom:4mm;">Capabilities</h2>
+    <div class="caps">
+      <div class="cap">
+        <div class="cap-title">Consumer and Behavioural Insight</div>
+        <div class="cap-body">IDIs, diary studies, longitudinal programmes, usability testing, concept testing and surveys. Deep experience in retail financial services: trust formation, platform adoption, retention drivers and competitive switching.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">Quantitative and Analytics</div>
+        <div class="cap-body">Survey design and segmentation, funnel and cohort analysis, A/B and multivariate testing, behavioural analytics platforms. Python foundations with ongoing development. Honest about what the data can and cannot support.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">Strategic Communication</div>
+        <div class="cap-body">Synthesising quantitative, qualitative and competitive intelligence into strategic narratives for marketing, product, commercial and C-suite audiences. Known for making insight move people to act.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">Insight Capability Building</div>
+        <div class="cap-body">Building research functions from scratch: ethical frameworks, GDPR-compliant consent processes, tool ecosystems, governance, self-service tools and playbooks. Experience mentoring researchers and coaching non-researchers.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">Competitive Intelligence</div>
+        <div class="cap-body">Six years working inside two of IG's direct competitors, with deep working knowledge of the retail trading market, customer acquisition and retention dynamics, and the competitive landscape.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">AI-Enabled Research</div>
+        <div class="cap-body">Opal AI and Copilot integrated as genuine working practice across synthesis, analysis and deliverables. Curious about emerging methods and committed to experimenting and sharing what works.</div>
+      </div>
+    </div>
+
+    <p class="tools-label">Platforms and Tools</p>
+    <div class="tools">
+      <span class="tool">SurveyMonkey</span>
+      <span class="tool">UserTesting</span>
+      <span class="tool">Optimizely</span>
+      <span class="tool">ContentSquare</span>
+      <span class="tool">GA4</span>
+      <span class="tool">Mixpanel</span>
+      <span class="tool">Segment</span>
+      <span class="tool">Tableau</span>
+      <span class="tool">Opal AI</span>
+      <span class="tool">Copilot AI</span>
+      <span class="tool">Excel</span>
+      <span class="tool">Figma</span>
+      <span class="tool">Miro</span>
+      <span class="tool">Jira</span>
+      <span class="tool">Confluence</span>
+    </div>
+
+  </div>
+  <div class="pf">
+    <span class="pf-name">Anastasiya Lupashko</span>
+    <span class="pf-email">anast.lup@gmail.com</span>
+  </div>
+</div>
+
+</body>
+</html>
