@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anastasiya Lupashko — UX Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#010101;--black2:#111;--coral:#FE2C55;--cyan:#25F4EE;
+  --warm:#F8F8F8;--rule:#E5E5E5;--fg:#111;--mid:#444;--dim:#999;--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;color:var(--fg);background:var(--white)}
+nav{position:sticky;top:0;z-index:100;background:rgba(1,1,1,0.97);backdrop-filter:blur(8px);padding:0 5vw;display:flex;justify-content:space-between;align-items:center;height:56px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-name{font-size:14px;font-weight:700;color:#fff;letter-spacing:0.02em}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.hero{background:var(--black);padding:100px 5vw 80px;min-height:92vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(254,44,85,0.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(37,244,238,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--coral);border:1px solid var(--coral);padding:4px 12px;margin-bottom:28px;position:relative;z-index:1}
+.hero-name{font-size:clamp(44px,7vw,80px);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-0.025em;margin-bottom:6px;position:relative;z-index:1}
+.hero-name span{color:var(--coral)}
+.hero-role{font-size:clamp(14px,1.8vw,17px);font-weight:300;color:rgba(255,255,255,0.3);letter-spacing:0.03em;margin-bottom:40px;position:relative;z-index:1}
+.hero-statement{font-size:clamp(15px,1.8vw,18px);font-weight:300;color:rgba(255,255,255,0.52);line-height:1.85;max-width:700px;margin-bottom:60px;position:relative;z-index:1}
+.hero-statement strong{color:rgba(255,255,255,0.88);font-weight:500}
+.hero-stats{display:flex;flex-wrap:wrap;gap:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.07);position:relative;z-index:1}
+.stat-num{font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--coral);display:block;line-height:1;margin-bottom:6px}
+.stat-label{font-size:12px;color:rgba(255,255,255,0.28);text-transform:uppercase;letter-spacing:0.06em;line-height:1.5;max-width:160px}
+section{padding:80px 5vw}
+.container{max-width:1200px;margin:0 auto}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
+.sec-title{font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--fg);letter-spacing:-0.02em;line-height:1.15;margin-bottom:40px}
+.sec-title em{color:var(--coral);font-style:normal}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.profile-body{font-size:16px;color:var(--mid);line-height:1.78;margin-bottom:20px}
+.kf-list{display:flex;flex-direction:column;gap:0}
+.kf{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--rule)}
+.kf:last-child{border-bottom:none}
+.kf-num{font-size:11px;font-weight:700;color:var(--coral);min-width:28px;padding-top:3px;letter-spacing:0.06em}
+.kf-body{font-size:15px;color:var(--mid);line-height:1.65}
+.kf-body strong{font-weight:600;color:var(--fg)}
+.cases-bg{background:var(--warm)}
+.case-list{display:flex;flex-direction:column;gap:32px}
+.case{background:#fff;border:1px solid var(--rule);overflow:hidden}
+.case-top{display:grid;grid-template-columns:1fr auto;gap:24px;padding:28px 32px 24px;border-bottom:1px solid var(--rule);background:#fafafa}
+.case-method{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--coral);margin-bottom:8px}
+.case-title{font-size:clamp(18px,2.5vw,22px);font-weight:700;color:var(--fg);line-height:1.3;letter-spacing:-0.01em}
+.case-metrics{display:flex;gap:36px;flex-shrink:0;align-self:center}
+.metric-num{font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--coral);display:block;line-height:1;margin-bottom:4px;text-align:right}
+.metric-label{font-size:11px;color:var(--dim);line-height:1.4;text-align:right;max-width:120px}
+.case-body{padding:28px 32px}
+.case-p{font-size:15px;color:var(--mid);line-height:1.78;margin-bottom:14px}
+.case-p:last-of-type{margin-bottom:0}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;padding:20px 32px;border-top:1px solid var(--rule)}
+.tag{font-size:12px;color:var(--dim);border:1px solid var(--rule);padding:3px 10px;font-weight:500}
+.caps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:60px}
+.cap{border-left:3px solid var(--coral);padding-left:20px}
+.cap-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--fg);margin-bottom:10px}
+.cap-body{font-size:14px;color:var(--mid);line-height:1.65}
+.tools-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tool{font-size:13px;color:var(--mid);border:1px solid var(--rule);padding:5px 12px;font-weight:500}
+footer{background:var(--black);padding:48px 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-name{font-size:16px;font-weight:700;color:#fff}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap}
+.foot-links a{font-size:14px;color:rgba(255,255,255,0.4);text-decoration:none}
+.foot-links a:hover{color:#fff}
+@media(max-width:900px){.profile-grid{grid-template-columns:1fr;gap:40px}.caps-grid{grid-template-columns:repeat(2,1fr)}.case-top{grid-template-columns:1fr;gap:16px}.case-metrics{justify-content:flex-start}}
+@media(max-width:600px){.caps-grid{grid-template-columns:1fr}nav{padding:0 20px}.hero{padding:80px 20px 60px}section{padding:60px 20px}footer{padding:40px 20px;flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<nav>
+  <span class="nav-name">Anastasiya Lupashko</span>
+  <div class="nav-links"><a href="#profile">Profile</a><a href="#work">Work</a><a href="#expertise">Expertise</a></div>
+</nav>
+<section class="hero">
+  <div class="container">
+    <div class="hero-pill">UX Researcher</div>
+    <h1 class="hero-name">Anastasiya <span>Lupashko</span></h1>
+    <p class="hero-role">UX Researcher &nbsp;|&nbsp; Behavioural Analytics &nbsp;|&nbsp; Mixed-Methods Research &nbsp;|&nbsp; Multi-Market &nbsp;|&nbsp; London</p>
+    <p class="hero-statement">I do not have e-commerce experience. What I have is five years of delivering <strong>mixed-methods research at pace</strong> in a fast-moving, data-saturated environment where every product decision needed evidence behind it and every stakeholder had a different definition of what that evidence should look like. The environment changes. The research discipline does not.</p>
+    <div class="hero-stats">
+      <div><span class="stat-num">x2</span><span class="stat-label">Research functions built from scratch</span></div>
+      <div><span class="stat-num">75%&rarr;50%</span><span class="stat-label">Bounce rate improvement through evidence-led changes</span></div>
+      <div><span class="stat-num">3.17%&rarr;9%</span><span class="stat-label">CTA conversion uplift from research-driven redesign</span></div>
+      <div><span class="stat-num">Multi-market</span><span class="stat-label">Research designed for audiences across multiple geographies</span></div>
+    </div>
+  </div>
+</section>
+<section id="profile">
+  <div class="container">
+    <div class="sec-eyebrow">Profile</div>
+    <h2 class="sec-title">Research built for <em>environments that don't slow down.</em></h2>
+    <div class="profile-grid">
+      <div>
+        <p class="profile-body">At Tradu, I ran research in a product environment that was launching internationally, iterating fast, and making decisions with significant consequences for users whose money was involved. The research had to be rigorous. It also had to move. Those two requirements are not in tension if the research is designed correctly from the start, and that is what I spent five years learning to do.</p>
+        <p class="profile-body">I ran qualitative programmes, longitudinal studies, diary studies and mixed-methods synthesis. I designed VoC surveys that reached segments other recruitment methods missed. I ran usability and concept testing that fed directly into A/B testing cycles. And I built the research infrastructure, coaching and governance that made it all sustainable at scale.</p>
+        <p class="profile-body">The product served customers across multiple markets and multiple experience levels. Research had to account for that diversity, not design it out. That meant building inclusive recruitment approaches, designing studies that worked across cultural contexts, and synthesising findings in a way that was actionable for product teams building for a heterogeneous audience. That work is directly transferable to what TikTok does in global e-commerce.</p>
+      </div>
+      <div>
+        <div class="kf-list">
+          <div class="kf"><span class="kf-num">01</span><span class="kf-body"><strong>Research at pace in data-saturated environments.</strong> Five years running mixed-methods research in an environment with high product velocity and deep analytics. Comfortable with ambiguity, fast to synthesise, and experienced designing research that fits within sprint cycles without sacrificing rigour.</span></div>
+          <div class="kf"><span class="kf-num">02</span><span class="kf-body"><strong>Behavioural analytics + qualitative integration.</strong> Bridges quantitative data (ContentSquare, GA4, Mixpanel) and qualitative insight to explain the mechanisms behind patterns that the data surfaces. Research identifies the why that the numbers cannot answer.</span></div>
+          <div class="kf"><span class="kf-num">03</span><span class="kf-body"><strong>Multi-audience research design.</strong> Designed research for products serving users across multiple markets, experience levels and contexts. Built inclusive recruitment approaches that reached disengaged segments. Comfortable synthesising findings for a heterogeneous user base.</span></div>
+          <div class="kf"><span class="kf-num">04</span><span class="kf-body"><strong>Experimentation and CRO.</strong> Research translated qualitative findings into testable hypotheses that fed A/B testing cycles. 30+ experiments informed by qualitative research. Demonstrated measurable impact on conversion and engagement.</span></div>
+          <div class="kf"><span class="kf-num">05</span><span class="kf-body"><strong>Stakeholder influence across functions.</strong> Communicates findings to engineering, product, marketing and executive audiences simultaneously. Known for making evidence land with sceptical stakeholders and for research that changes what organisations decide to build.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cases-bg" id="work">
+  <div class="container">
+    <div class="sec-eyebrow">Selected Work</div>
+    <h2 class="sec-title">Research built for <em>speed and rigour together</em></h2>
+    <div class="case-list">
+      <div class="case">
+        <div class="case-top">
+          <div>
+            <div class="case-method">Homepage and Landing Page Optimisation + Data Review + Qual Research + A/B Testing</div>
+            <div class="case-title">Research-led optimisation programme: from data to hypothesis to measurable results</div>
+          </div>
+          <div class="case-metrics">
+            <div><span class="metric-num">75%&rarr;50%</span><span class="metric-label">Bounce rate</span></div>
+            <div><span class="metric-num">3.17%&rarr;9%</span><span class="metric-label">CTA conversion</span></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <p class="case-p">The product had extensive analytics and an active experimentation programme. What it lacked was the qualitative layer that could explain why users were behaving as the data described. The research brief was to close that gap: take the data, understand the mechanisms behind the patterns, generate hypotheses, and feed them into the experimentation cycle.</p>
+          <p class="case-p">Started with a behavioural data review to identify where the highest-impact friction lived. Ran qualitative research with users to understand what was driving the patterns. Translated findings into prioritised hypotheses that the experimentation team could test. Research contributed to scroll depth improving from 15% to 31%, bounce rate falling from 75% to 50%, CTA conversion rising from 3.17% to 9%, journey completion up 24%, and overall conversion up 5%.</p>
+        </div>
+        <div class="case-tags"><span class="tag">Behavioural data review</span><span class="tag">Qualitative interviews</span><span class="tag">Hypothesis development</span><span class="tag">A/B testing</span><span class="tag">ContentSquare</span><span class="tag">GA4</span><span class="tag">Optimizely</span></div>
+      </div>
+      <div class="case">
+        <div class="case-top">
+          <div>
+            <div class="case-method">Voice of the Customer Programme + Insights Consolidation</div>
+            <div class="case-title">Creating company-wide visibility into research and experimentation output</div>
+          </div>
+          <div class="case-metrics"><div><span class="metric-num">Org-wide</span><span class="metric-label">Research visibility across all teams</span></div></div>
+        </div>
+        <div class="case-body">
+          <p class="case-p">Research methods were already running. What was missing was the connective layer: a shared space where all insights channels came together, where different teams could engage with the evidence, and where stakeholders could follow what research and experimentation were producing in real time.</p>
+          <p class="case-p">Built and owned the VoC programme that consolidated insights from across the business into one place. Created the infrastructure for cross-functional engagement with research output, designed stakeholder communication processes that kept the evidence visible at the right moments, and established the rhythm that turned research into a live resource rather than a periodic report. The programme improved research literacy across the organisation and reduced the gap between insight generation and business decision-making.</p>
+        </div>
+        <div class="case-tags"><span class="tag">VoC programme</span><span class="tag">Insights consolidation</span><span class="tag">Stakeholder communication</span><span class="tag">Cross-functional engagement</span><span class="tag">Research operations</span></div>
+      </div>
+      <div class="case">
+        <div class="case-top">
+          <div>
+            <div class="case-method">Longitudinal Qualitative Research + Diary Studies + In-Depth Interviews</div>
+            <div class="case-title">Surfacing what standard testing could not in a complex trading platform beta</div>
+          </div>
+          <div class="case-metrics"><div><span class="metric-num">Beta</span><span class="metric-label">Insights standard testing could not reach</span></div></div>
+        </div>
+        <div class="case-body">
+          <p class="case-p">Beta testing and product analytics were already running. What they could not capture was how users developed — or failed to develop — confidence and competence with a complex financial product over time. A single session could not show that. Longitudinal research could.</p>
+          <p class="case-p">Designed and ran a qualitative longitudinal programme on the trading platform in beta, tracking the same cohort through diary studies and repeat in-depth interviews across multiple months. The research surfaced blockers and friction patterns that neither usability testing nor product data had identified — specific moments where the product's mental model diverged from the user's, and where that divergence compounded into disengagement. The findings provided multiple actionable items that contributed to improved retention and engagement.</p>
+        </div>
+        <div class="case-tags"><span class="tag">Longitudinal research</span><span class="tag">Diary studies</span><span class="tag">In-depth interviews</span><span class="tag">Beta research</span><span class="tag">Retention</span><span class="tag">Complex product</span></div>
+      </div>
+      <div class="case">
+        <div class="case-top">
+          <div>
+            <div class="case-method">Survey Programme + NPS + Journey Optimisation</div>
+            <div class="case-title">Scaling a survey programme to reach hard-to-reach audiences and drive journey improvements</div>
+          </div>
+          <div class="case-metrics">
+            <div><span class="metric-num">-4%</span><span class="metric-label">Onboarding abandonment rate</span></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <p class="case-p">Standard survey deployment reaches the customers who are already engaged. The customers generating the most friction, abandoning journeys and driving contact volumes are the least likely to respond. Closing that gap required rethinking how and where surveys were served, not just what they asked.</p>
+          <p class="case-p">Managed and evolved the survey programme across FXCM and Tradu. Integrated rating scales directly into email campaigns and FAQ articles on the site, creating a continuous NPS signal that served both product improvement and regulatory reporting purposes. Updated survey journeys to target high-abandonment flows specifically, reaching segments that had previously been invisible to research. Findings from the programme fed directly into journey redesign work. Onboarding abandonment rate improved by 4%. The programme also provided a consistent, auditable insight layer that satisfied regulatory visibility requirements.</p>
+        </div>
+        <div class="case-tags"><span class="tag">Survey design</span><span class="tag">NPS</span><span class="tag">Email integration</span><span class="tag">Journey optimisation</span><span class="tag">Abandonment reduction</span><span class="tag">Regulatory reporting</span></div>
+      </div>
+      <div class="case">
+        <div class="case-top">
+          <div>
+            <div class="case-method">Research Function Build + Mixed Methods + Capability Development</div>
+            <div class="case-title">Building a research function that runs across qualitative, quantitative and experimental methods</div>
+          </div>
+          <div class="case-metrics"><div><span class="metric-num">x2</span><span class="metric-label">Research functions built from scratch</span></div></div>
+        </div>
+        <div class="case-body">
+          <p class="case-p">At both FXCM and Tradu, the research function did not exist before I arrived. At FXCM I introduced research into an organisation that had no existing practice and built the methods, processes and stakeholder buy-in from the ground up. At Tradu I did it again, faster and with higher complexity — sole researcher owning the full agenda across qual, quant and experimental research simultaneously.</p>
+          <p class="case-p">At Tradu, built the full infrastructure: ethical frameworks, participant consent processes, data governance standards, research repositories and tool ecosystems. Established coaching programmes for product managers and designers in interviewing technique, bias mitigation and ethical data handling. Developed playbooks and office-hours processes giving teams a path to run their own research with rigour. Set quality standards and guardrails for AI-assisted research methods. The result was a research function that generated insight across more teams more frequently, without becoming the sole gatekeeper for every study.</p>
+        </div>
+        <div class="case-tags"><span class="tag">Research function setup</span><span class="tag">Qualitative research</span><span class="tag">Quantitative research</span><span class="tag">Coaching and enablement</span><span class="tag">Governance</span><span class="tag">Research ops</span><span class="tag">AI guardrails</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="expertise">
+  <div class="container">
+    <div class="sec-eyebrow">Expertise</div>
+    <h2 class="sec-title">What I bring</h2>
+    <div class="caps-grid">
+      <div class="cap"><div class="cap-title">Mixed-Methods Research</div><div class="cap-body">In-depth interviews, diary studies, longitudinal research, usability and concept testing, survey design. Integrates qualitative and quantitative findings into a single strategic narrative at pace.</div></div>
+      <div class="cap"><div class="cap-title">Behavioural Analytics</div><div class="cap-body">Works fluently with ContentSquare, GA4 and Mixpanel to surface behavioural patterns and cross-reference with qualitative findings. Research explains the why behind the numbers.</div></div>
+      <div class="cap"><div class="cap-title">Multi-Audience Research</div><div class="cap-body">Designed research for products serving users across multiple markets, experience levels and contexts. Inclusive recruitment and synthesis for a heterogeneous user base.</div></div>
+      <div class="cap"><div class="cap-title">Research for Experimentation</div><div class="cap-body">Provides the qualitative layer that makes experimentation programmes more effective. Runs data review, identifies friction mechanisms and develops hypotheses that feed A/B testing cycles. Demonstrated measurable improvements in bounce rate, conversion and engagement.</div></div>
+      <div class="cap"><div class="cap-title">Research Ops and Enablement</div><div class="cap-body">Builds participant recruitment, ethical frameworks, research repositories and team coaching. Creates research infrastructure that is sustainable at scale and compliant in regulated environments.</div></div>
+      <div class="cap"><div class="cap-title">Stakeholder Influence</div><div class="cap-body">Communicates findings to engineering, product, marketing and executive audiences simultaneously. Research known for landing with sceptical stakeholders and changing what organisations decide to build.</div></div>
+    </div>
+    <div class="tools-eyebrow">Tools</div>
+    <div class="tools">
+      <span class="tool">UserTesting</span><span class="tool">SurveyMonkey</span><span class="tool">Miro</span><span class="tool">Figma</span><span class="tool">ContentSquare</span><span class="tool">GA4</span><span class="tool">Mixpanel</span><span class="tool">Optimizely</span><span class="tool">Opal AI</span><span class="tool">Jira</span><span class="tool">Confluence</span><span class="tool">Tableau</span>
+    </div>
+  </div>
+</section>
+<footer>
+  <span class="foot-name">Anastasiya Lupashko</span>
+  <div class="foot-links">
+    <a href="mailto:anast.lup@gmail.com">anast.lup@gmail.com</a>
+    <a href="tel:+447596831351">+44 7596 831351</a>
+    <a href="https://linkedin.com/in/anastasiyalupashko" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+</body>
+</html>
