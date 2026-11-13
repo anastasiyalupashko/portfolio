@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anastasiya Lupashko — Portfolio for Personio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --coral:    #E84B2F;
+  --coral-md: #C93D23;
+  --coral-lt: #FCEEE9;
+  --dark:     #1A1A28;
+  --dark-md:  #2D2D40;
+  --cream:    #FDF9F7;
+  --warm:     #F5EDE8;
+  --rule:     #E8DDD8;
+  --fg:       #1A1A28;
+  --fg-mid:   #3D3540;
+  --fg-dim:   #9A8F8A;
+  --white:    #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.6;
+  color: var(--fg);
+  background: var(--white);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+@media print {
+  body { background: var(--white); }
+  @page { size: A4; margin: 0; }
+}
+
+@media screen {
+  body { background: #E0D8D4; padding: 20px 0; }
+  .page {
+    width: min(210mm, 100%);
+    min-height: auto;
+    margin: 0 auto 20px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.14);
+    position: relative;
+  }
+  .pf { position: relative; }
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  background: var(--white);
+}
+.page:last-child { page-break-after: avoid; }
+
+/* ── COVER ── */
+.cover { background: var(--dark); }
+
+.cover-top-band { background: var(--coral); height: 5px; }
+
+.cover-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(297mm - 5px);
+  padding: 0 15mm;
+}
+
+.cover-eyebrow-row {
+  padding-top: 10mm;
+  padding-bottom: 8mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.cover-eyebrow {
+  font-size: 7pt;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.cover-role-pill {
+  font-size: 7pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--coral);
+  border: 1px solid var(--coral);
+  padding: 2px 8px;
+}
+
+.cover-hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10mm 0; }
+
+.cover-name {
+  font-size: 36pt;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 2mm;
+}
+.cover-name span { color: var(--coral); }
+
+.cover-title {
+  font-size: 11pt;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  margin-bottom: 10mm;
+}
+
+.cover-statement {
+  font-size: 10pt;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  max-width: 130mm;
+  margin-bottom: 12mm;
+}
+.cover-statement strong { color: rgba(255,255,255,0.88); font-weight: 500; }
+
+.cover-rule { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 10mm; }
+
+.cover-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 10mm;
+}
+.stat { padding-right: 6mm; }
+.stat-num {
+  font-size: 20pt;
+  font-weight: 700;
+  color: var(--coral);
+  display: block;
+  line-height: 1;
+  margin-bottom: 2mm;
+}
+.stat-label {
+  font-size: 6.5pt;
+  font-weight: 400;
+  color: rgba(255,255,255,0.28);
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cover-contact {
+  display: flex;
+  gap: 7mm;
+  padding-bottom: 10mm;
+}
+.cover-contact span {
+  font-size: 7pt;
+  color: rgba(255,255,255,0.22);
+}
+
+/* ── INNER PAGES ── */
+.inner { background: var(--white); }
+
+.ph {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7mm 15mm 5mm;
+  border-bottom: 2px solid var(--coral);
+}
+.ph-name { font-size: 8.5pt; font-weight: 600; color: var(--fg); }
+.ph-label {
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+}
+.ph-num { font-size: 7pt; color: var(--fg-dim); }
+
+.pc { padding: 8mm 15mm 10mm; }
+
+/* ── PROFILE ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 8mm;
+}
+.col-rule { background: var(--rule); }
+
+.profile-heading {
+  font-size: 15pt;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.25;
+  margin-bottom: 4mm;
+  letter-spacing: -0.01em;
+}
+.profile-heading em { color: var(--coral); font-style: normal; }
+
+.profile-body {
+  font-size: 8.5pt;
+  color: var(--fg-mid);
+  line-height: 1.72;
+  margin-bottom: 3.5mm;
+}
+
+.kf-label {
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 4mm;
+}
+.kf-item {
+  display: flex;
+  gap: 3mm;
+  margin-bottom: 4.5mm;
+  align-items: flex-start;
+}
+.kf-num {
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--coral);
+  min-width: 14px;
+  margin-top: 1px;
+}
+.kf-text { font-size: 8.5pt; color: var(--fg-mid); line-height: 1.6; }
+.kf-text strong { font-weight: 600; color: var(--fg); }
+
+/* ── SECTION ── */
+.sec-label {
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 1.5mm;
+}
+.sec-title {
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 5mm;
+  letter-spacing: -0.01em;
+}
+
+/* ── CASE CARDS ── */
+.case {
+  border: 1px solid var(--rule);
+  margin-bottom: 5mm;
+}
+.case:last-child { margin-bottom: 0; }
+.case-header {
+  background: var(--warm);
+  padding: 5mm 6mm 4mm;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4mm;
+}
+.case-method {
+  font-size: 6pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 2mm;
+}
+.case-title {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.case-minis {
+  display: flex;
+  gap: 7mm;
+  flex-shrink: 0;
+  margin-top: 2mm;
+}
+.mini { text-align: right; }
+.mini-num {
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--coral);
+  display: block;
+  line-height: 1;
+  margin-bottom: 1mm;
+}
+.mini-label { font-size: 6.5pt; color: var(--fg-dim); line-height: 1.3; }
+
+.case-body-wrap { padding: 5mm 6mm; }
+.case-body {
+  font-size: 8.5pt;
+  color: var(--fg-mid);
+  line-height: 1.68;
+  margin-bottom: 2.5mm;
+}
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  margin-top: 3.5mm;
+  padding-top: 3.5mm;
+  border-top: 1px solid var(--rule);
+}
+.tag {
+  font-size: 6.5pt;
+  color: var(--fg-dim);
+  border: 0.75px solid var(--rule);
+  padding: 1.5px 5px;
+  font-weight: 500;
+}
+
+/* ── CAPS ── */
+.caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-bottom: 7mm; }
+.cap { border-left: 2.5px solid var(--coral); padding-left: 4mm; }
+.cap-title { font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg); margin-bottom: 2mm; }
+.cap-body { font-size: 8pt; color: var(--fg-mid); line-height: 1.6; }
+
+/* ── TOOLS ── */
+.tools-label {
+  font-size: 6.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 3mm;
+}
+.tools { display: flex; flex-wrap: wrap; gap: 2mm; }
+.tool {
+  font-size: 7.5pt;
+  color: var(--fg-mid);
+  border: 0.75px solid var(--rule);
+  padding: 2px 6px;
+  font-weight: 500;
+}
+
+/* ── FOOTER ── */
+.pf {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 7mm;
+  background: var(--dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 15mm;
+}
+.pf-name { font-size: 6.5pt; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.3); }
+.pf-email { font-size: 6.5pt; color: rgba(255,255,255,0.18); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="cover-top-band"></div>
+  <div class="cover-inner">
+    <div class="cover-eyebrow-row">
+      <span class="cover-eyebrow">Research Portfolio</span>
+      <span class="cover-role-pill">Research Lead</span>
+    </div>
+    <div class="cover-hero">
+      <div class="cover-name">Anastasiya <span>Lupashko</span></div>
+      <div class="cover-title">Research Lead &nbsp;|&nbsp; HR Technology &nbsp;|&nbsp; London</div>
+      <p class="cover-statement">
+        When I joined FXCM, there was no research function. When I left Tradu,
+        there was a <strong>full mixed-methods practice, running continuously</strong>
+        across product, marketing and commercial teams, with the governance, tools,
+        processes and stakeholder relationships to sustain it. I have done this twice.
+        The Research Lead role at Personio is the kind of challenge I find most
+        compelling: <strong>owning the research agenda for an entire product organisation</strong>,
+        setting the standard for how insight is generated and shared, and enabling
+        teams to run sound research themselves at scale.
+      </p>
+      <div class="cover-rule"></div>
+      <div class="cover-stats">
+        <div class="stat">
+          <span class="stat-num">6+</span>
+          <span class="stat-label">Years as sole and lead researcher</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">+24%</span>
+          <span class="stat-label">Journey completion after research-driven changes</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">+5%</span>
+          <span class="stat-label">Conversion from VoC programme built from scratch</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Multi</span>
+          <span class="stat-label">Market: UK, EU, APAC, US</span>
+        </div>
+      </div>
+    </div>
+    <div class="cover-contact">
+      <span>anast.lup@gmail.com</span>
+      <span>+44 7596 831351</span>
+      <span>London, UK</span>
+      <span>linkedin.com/in/anastasiyalupashko</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: PROFILE -->
+<div class="page inner" style="padding-bottom:9mm;">
+  <div class="ph">
+    <span class="ph-name">Anastasiya Lupashko</span>
+    <span class="ph-label">Profile</span>
+    <span class="ph-num">02</span>
+  </div>
+  <div class="pc">
+    <div class="two-col">
+      <div>
+        <h2 class="profile-heading">The researcher who <em>builds</em> the function, not just runs it.</h2>
+        <p class="profile-body">
+          Over six years, in environments where research did not exist before I
+          arrived, I have built the full infrastructure that makes research
+          sustainable: the measurement programmes, the participant recruitment
+          frameworks, the consent and governance standards, the tools and
+          repositories, and the stakeholder relationships that mean insight reaches
+          the people who need to act on it.
+        </p>
+        <p class="profile-body">
+          As the sole researcher for a complex financial services product operating
+          across multiple markets, I owned the full research agenda: deciding what
+          to study and when, selecting methods, running studies end to end, and
+          synthesising qualitative and quantitative evidence into strategic
+          narratives for product, marketing and executive stakeholders. I also ran
+          the survey measurement programme from scratch, designed to reach the
+          customer segments that standard methods missed.
+        </p>
+        <p class="profile-body">
+          Enabling product and design teams to run sound research themselves is
+          work I have invested in consistently. Research does not scale if it only
+          runs when I run it. I have coached product managers and designers in
+          interviewing, bias mitigation and ethical data handling, built lightweight
+          playbooks and guardrails, and set the quality bar for self-service research
+          across the organisation.
+        </p>
+        <p class="profile-body">
+          AI tools are integrated into how I work: Claude, Opal AI and Copilot
+          across study design, synthesis, analysis and reporting. I also think
+          carefully about where AI output needs checking before it is relied on,
+          and I have set standards for how teams should use AI in their own research.
+        </p>
+      </div>
+      <div class="col-rule"></div>
+      <div>
+        <p class="kf-label">What I bring to Personio</p>
+        <div class="kf-item">
+          <span class="kf-num">01</span>
+          <span class="kf-text"><strong>Research agenda ownership.</strong> Experience as the sole researcher owning the full agenda across a product organisation: prioritising across competing stakeholder needs, identifying what to study, and ensuring research informs product strategy rather than reacting to it.</span>
+        </div>
+        <div class="kf-item">
+          <span class="kf-num">02</span>
+          <span class="kf-text"><strong>Survey measurement programmes.</strong> Designed and ran VoC survey programmes end to end, from questionnaire design through sampling, fielding, analysis and reporting. Built programmes specifically to reach disengaged and hard-to-find segments. Comfortable with statistical analysis and reporting results with the right caveats.</span>
+        </div>
+        <div class="kf-item">
+          <span class="kf-num">03</span>
+          <span class="kf-text"><strong>Insight synthesis across sources.</strong> Combines qualitative and quantitative customer feedback from multiple channels into a single coherent narrative. Known for making insight land with audiences from engineers to executives and for making evidence change decisions.</span>
+        </div>
+        <div class="kf-item">
+          <span class="kf-num">04</span>
+          <span class="kf-text"><strong>Research enablement at scale.</strong> Builds playbooks, tools and office-hours processes that allow product and design teams to run their own research with rigour, while maintaining consistent quality standards and ethical guardrails across the organisation.</span>
+        </div>
+        <div class="kf-item">
+          <span class="kf-num">05</span>
+          <span class="kf-text"><strong>AI across the research workflow.</strong> Claude, Opal AI and Copilot integrated into study design, synthesis and analysis as genuine working practice. Sets the standards and guardrails for AI use in research, with an understanding of where outputs require verification before being relied on.</span>
+        </div>
+        <div class="kf-item">
+          <span class="kf-num">06</span>
+          <span class="kf-text"><strong>Cross-functional partnership.</strong> Partners with product, brand, marketing and customer-facing teams to ensure what is learned about customers is consistent and shared across the organisation. Builds trusted relationships with stakeholders at every level.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf">
+    <span class="pf-name">Anastasiya Lupashko</span>
+    <span class="pf-email">anast.lup@gmail.com</span>
+  </div>
+</div>
+
+<!-- PAGE 3: CASE STUDIES 1 & 2 -->
+<div class="page inner" style="padding-bottom:9mm;">
+  <div class="ph">
+    <span class="ph-name">Anastasiya Lupashko</span>
+    <span class="ph-label">Selected Work</span>
+    <span class="ph-num">03</span>
+  </div>
+  <div class="pc">
+    <p class="sec-label">Case Studies</p>
+    <h2 class="sec-title">Building measurement programmes and enabling teams</h2>
+
+    <div class="case">
+      <div class="case-header">
+        <div>
+          <div class="case-method">Survey Measurement Programme + Segmentation Analysis</div>
+          <div class="case-title">Designing a VoC programme that reached the customers standard surveys missed</div>
+        </div>
+        <div class="case-minis">
+          <div class="mini">
+            <span class="mini-num">+5%</span>
+            <span class="mini-label">Conversion driven by<br>insight-led changes</span>
+          </div>
+          <div class="mini">
+            <span class="mini-num">3</span>
+            <span class="mini-label">Distinct friction<br>profiles identified</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body-wrap">
+        <p class="case-body">
+          The customers generating the highest contact volumes and clearest signs of
+          disengagement were also the least likely to respond to standard surveys.
+          Existing insight described the experience of engaged customers well. It had
+          almost nothing to say about the customers whose experience was failing.
+        </p>
+        <p class="case-body">
+          Designed a VoC measurement programme from scratch using lighter-touch
+          question design and alternative recruitment approaches to reach disengaged
+          segments. Ran segmentation analysis to surface distinct friction profiles,
+          followed up with qualitative interviews to understand the patterns the
+          survey revealed, and linked findings back to contact volume and churn data
+          to validate that the barriers in research matched observed behaviour.
+          Reported results with explicit caveats on sampling and confidence at every
+          stage.
+        </p>
+        <p class="case-body">
+          Three distinct friction profiles emerged, each driven by different root causes
+          and each requiring a different product and service response. The programme
+          contributed to a 5% conversion improvement and became a standing element
+          of the quarterly insight calendar. Product and customer-facing teams used the
+          same segmentation framework to align on the customer view across functions.
+        </p>
+        <div class="case-tags">
+          <span class="tag">Survey design</span>
+          <span class="tag">Sampling</span>
+          <span class="tag">Segmentation</span>
+          <span class="tag">Qualitative follow-up</span>
+          <span class="tag">Cross-functional reporting</span>
+          <span class="tag">Measurement calendar</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="case-header">
+        <div>
+          <div class="case-method">Research Enablement + Capability Building</div>
+          <div class="case-title">Enabling product and design teams to run sound research themselves</div>
+        </div>
+        <div class="case-minis">
+          <div class="mini">
+            <span class="mini-num">Org-wide</span>
+            <span class="mini-label">Research practice<br>built from zero</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body-wrap">
+        <p class="case-body">
+          As the sole researcher across a product organisation, the choice is either
+          to become a bottleneck or to build the conditions where research can happen
+          without you. I chose the second path consistently throughout my career.
+        </p>
+        <p class="case-body">
+          Built the full research infrastructure from scratch: ethical frameworks,
+          participant consent processes, data governance standards, research
+          repositories and tool ecosystems matched to what teams were ready to use
+          at each stage. Ran coaching sessions with product managers and designers in
+          interviewing technique, bias mitigation and ethical data handling. Developed
+          lightweight playbooks and office-hours processes that gave teams a clear path
+          to run their own studies without compromising rigour or compliance. Set the
+          quality bar for self-service research across the organisation, including the
+          guardrails for AI-assisted research methods.
+        </p>
+        <p class="case-body">
+          The result was an organisation where research reached more teams more
+          frequently, without the research function becoming the sole gatekeeper for
+          every study. Product and design teams developed genuine research literacy,
+          and the insights they generated fed back into the central repository that
+          gave everyone a shared view of the customer.
+        </p>
+        <div class="case-tags">
+          <span class="tag">Research playbooks</span>
+          <span class="tag">Coaching</span>
+          <span class="tag">Governance and ethics</span>
+          <span class="tag">Participant recruitment</span>
+          <span class="tag">Research repository</span>
+          <span class="tag">AI guardrails</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="pf">
+    <span class="pf-name">Anastasiya Lupashko</span>
+    <span class="pf-email">anast.lup@gmail.com</span>
+  </div>
+</div>
+
+<!-- PAGE 4: CASE STUDY 3 + CAPABILITIES -->
+<div class="page inner" style="padding-bottom:9mm;">
+  <div class="ph">
+    <span class="ph-name">Anastasiya Lupashko</span>
+    <span class="ph-label">Work and Expertise</span>
+    <span class="ph-num">04</span>
+  </div>
+  <div class="pc">
+
+    <div class="case" style="margin-bottom:7mm;">
+      <div class="case-header">
+        <div>
+          <div class="case-method">Longitudinal Mixed-Methods Research</div>
+          <div class="case-title">Understanding how trust and confidence develop over time with a complex product</div>
+        </div>
+        <div class="case-minis">
+          <div class="mini">
+            <span class="mini-num">+24%</span>
+            <span class="mini-label">Journey completion<br>after insight-led changes</span>
+          </div>
+          <div class="mini">
+            <span class="mini-num">Multi-wave</span>
+            <span class="mini-label">Same cohort tracked<br>over months</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-body-wrap">
+        <p class="case-body">
+          Customers were completing onboarding and showing early engagement but then
+          quietly disengaging before the behaviours that predict long-term retention
+          had formed. Standard session-based research could not catch something that
+          accumulated over weeks, and the product data showed the drop-off without
+          explaining what drove it.
+        </p>
+        <p class="case-body">
+          Designed and ran a longitudinal programme tracking the same cohort across
+          multiple months through diary studies and repeat in-depth interviews, mapping
+          how confidence and trust developed or eroded over time. Cross-referenced with
+          behavioural analytics to identify where the lived experience diverged from
+          what the product data suggested. Synthesised qualitative and quantitative
+          evidence into a single strategic narrative that product, marketing and
+          customer service teams could all act on. AI tools were used to accelerate
+          thematic analysis across diary entries, with manual verification of patterns
+          before findings were reported.
+        </p>
+        <p class="case-body">
+          The programme identified an accumulation effect: not a single broken moment
+          but a pattern of small, unresolved friction that compounded across the journey
+          and eroded confidence before retention had time to form. Changes driven by the
+          findings contributed to a 24% improvement in journey completion.
+        </p>
+        <div class="case-tags">
+          <span class="tag">Longitudinal research</span>
+          <span class="tag">Diary studies</span>
+          <span class="tag">In-depth interviews</span>
+          <span class="tag">Behavioural analytics</span>
+          <span class="tag">AI-assisted synthesis</span>
+          <span class="tag">Multi-stakeholder reporting</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="sec-label">Expertise</p>
+    <h2 class="sec-title" style="margin-bottom:4mm;">Capabilities</h2>
+    <div class="caps">
+      <div class="cap">
+        <div class="cap-title">Research Agenda Ownership</div>
+        <div class="cap-body">Prioritising across competing product, brand and commercial stakeholder needs. Identifying strategic research questions, setting the research calendar and ensuring insight reaches decision-making at the right moment.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">Survey and Measurement</div>
+        <div class="cap-body">End-to-end survey programme design: questionnaire design, sampling, fielding, statistical analysis and reporting with appropriate caveats. Built programmes that reach disengaged segments standard methods miss.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">Qualitative Research</div>
+        <div class="cap-body">In-depth interviews, diary studies, usability and concept testing, longitudinal programmes, structured synthesis. Expert in facilitating research sessions and translating complex findings into clear strategic narratives.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">Research Enablement</div>
+        <div class="cap-body">Playbooks, coaching, office hours and guardrails that allow product and design teams to self-serve research with rigour. Builds participant recruitment frameworks, consent processes and repositories from scratch.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">AI-Assisted Research</div>
+        <div class="cap-body">Claude, Opal AI and Copilot integrated across study design, synthesis, analysis and reporting. Sets standards and guardrails for AI use in research, with clear protocols for verifying output before relying on it.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-title">Evidence-Based Storytelling</div>
+        <div class="cap-body">Combines qualitative and quantitative evidence into narratives tailored for audiences from engineers to executives. Known for making insight land with sceptical stakeholders and for research that changes what organisations actually do.</div>
+      </div>
+    </div>
+
+    <p class="tools-label">Tools and Platforms</p>
+    <div class="tools">
+      <span class="tool">SurveyMonkey</span>
+      <span class="tool">UserTesting</span>
+      <span class="tool">Miro</span>
+      <span class="tool">ContentSquare</span>
+      <span class="tool">GA4</span>
+      <span class="tool">Mixpanel</span>
+      <span class="tool">Optimizely</span>
+      <span class="tool">Claude AI</span>
+      <span class="tool">Opal AI</span>
+      <span class="tool">Copilot AI</span>
+      <span class="tool">Tableau</span>
+      <span class="tool">Figma</span>
+      <span class="tool">Jira</span>
+      <span class="tool">Confluence</span>
+    </div>
+
+  </div>
+  <div class="pf">
+    <span class="pf-name">Anastasiya Lupashko</span>
+    <span class="pf-email">anast.lup@gmail.com</span>
+  </div>
+</div>
+
+</body>
+</html>
