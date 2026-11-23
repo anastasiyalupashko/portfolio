@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anastasiya Lupashko | CRO and Experimentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #112040;
+    --navy-light: #1A3055;
+    --gold: #C9993A;
+    --gold-light: #E8C06A;
+    --gold-pale: rgba(201, 153, 58, 0.12);
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F5;
+    --text-muted: #7A9BB5;
+    --border: rgba(201, 153, 58, 0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(10, 22, 40, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    letter-spacing: 0.03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,153,58,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .tag {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-delta {
+    font-size: 0.72rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* SECTION SHARED */
+  section {
+    padding: 7rem 4rem;
+    position: relative;
+  }
+
+  section::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 4rem; right: 4rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--warm-white);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    line-height: 1.8;
+    margin-bottom: 3.5rem;
+  }
+
+  /* CASE STUDY 1 */
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .case-content h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--warm-white);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .case-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .case-content p:last-child { margin-bottom: 0; }
+
+  .case-process {
+    margin-top: 1.8rem;
+  }
+
+  .process-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(201,153,58,0.1);
+  }
+
+  .process-step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    min-width: 1.6rem;
+    padding-top: 0.1rem;
+  }
+
+  .step-text {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .step-text strong {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  /* METRICS PANEL */
+  .metrics-panel {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: sticky;
+    top: 7rem;
+  }
+
+  .metrics-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+  }
+
+  .metric-row {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(201,153,58,0.1);
+  }
+
+  .metric-row:last-child { border-bottom: none; }
+
+  .metric-name {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .metric-values {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+
+  .metric-before {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.3);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.15);
+  }
+
+  .metric-arrow {
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  .metric-after {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .metric-bar-wrap {
+    margin-top: 0.6rem;
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .metric-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 2px;
+  }
+
+  /* CASE STUDY 2 - HYPOTHESIS ENGINE */
+  .case2 { background: var(--navy-mid); }
+
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+
+  .pipeline-stage {
+    background: var(--navy);
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+
+  .pipeline-stage:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    width: 1px;
+    height: 40%;
+    transform: translateY(-50%);
+    background: var(--border);
+  }
+
+  .pipeline-icon {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .pipeline-stage-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .pipeline-stage h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--warm-white);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .pipeline-stage p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .case2-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .insight-card {
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .insight-card h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--warm-white);
+    margin-bottom: 0.8rem;
+  }
+
+  .insight-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* CASE STUDY 3 - SURVEY */
+  .survey-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .challenge-block {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .challenge-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .challenge-block p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .outcome-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .outcome-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    padding: 1.4rem;
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .outcome-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    line-height: 1;
+    min-width: 3rem;
+  }
+
+  .outcome-text h5 {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--warm-white);
+    margin-bottom: 0.3rem;
+  }
+
+  .outcome-text p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* EXPERTISE SECTION */
+  .expertise { background: var(--navy-light); }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .expertise-card {
+    padding: 2rem;
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .expertise-card h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: var(--warm-white);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .expertise-card p {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* TOOLS */
+  .tools-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2.5rem;
+  }
+
+  .tool-chip {
+    padding: 0.4rem 1rem;
+    background: var(--gold-pale);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    letter-spacing: 0.03em;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 4rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  footer a:hover { color: var(--gold-light); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.6rem; }
+    .nav-links { display: none; }
+    section, .hero { padding: 5rem 1.6rem; }
+    .hero-inner, .case-grid, .survey-grid, .case2-bottom { grid-template-columns: 1fr; gap: 2rem; }
+    .pipeline-grid { grid-template-columns: 1fr 1fr; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .metrics-panel { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Anastasiya Lupashko</span>
+  <ul class="nav-links">
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+    <li><a href="#surveys">Surveys</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-label">CRO and Experimentation Portfolio</div>
+      <h1>Research-led<br><em>conversion</em><br>at scale.</h1>
+      <p class="hero-bio">Six years building and owning end-to-end experimentation functions in regulated financial services. The work was not running tests. It was building the intelligence system that made every test worth running.</p>
+      <div class="hero-tags">
+        <span class="tag">A/B and Multivariate Testing</span>
+        <span class="tag">Hypothesis Development</span>
+        <span class="tag">Optimizely</span>
+        <span class="tag">Funnel Analysis</span>
+        <span class="tag">Research-Led CRO</span>
+        <span class="tag">Regulated Fintech</span>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number">51%</div>
+        <div class="stat-delta">From 75%</div>
+        <div class="stat-label">Homepage bounce rate reduction</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8.44%</div>
+        <div class="stat-delta">From 3.17%</div>
+        <div class="stat-label">CTA clickthrough improvement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">+24%</div>
+        <div class="stat-delta">Journey completion</div>
+        <div class="stat-label">Successful end-to-end journey lift</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">+5%</div>
+        <div class="stat-delta">Conversion rate</div>
+        <div class="stat-label">Platform-wide conversion improvement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY 1: EXPERIMENTATION PROGRAMME -->
+<section id="programme">
+  <div class="section-inner">
+    <div class="section-eyebrow">Case Study 01</div>
+    <h2 class="section-title">Building the Experimentation Programme from Zero</h2>
+    <p class="section-intro">There was no CRO function when I joined. No testing tool, no process, no internal case for one. This is how that became a fully owned, evidence-driven experimentation programme operating at scale.</p>
+
+    <div class="case-grid">
+      <div class="case-content">
+        <h3>The challenge</h3>
+        <p>FXCM and subsequently Tradu were making product and acquisition decisions based on instinct, agency recommendations and historical assumption. Customer behaviour on key journeys, including the homepage, onboarding flow and landing pages, was not being measured in a way that connected to decisions.</p>
+        <p>The brief was not just to run tests. It was to build the capability: the tools, the process, the cross-functional buy-in, and the evidence quality standard that would make experimentation a reliable input into the product roadmap.</p>
+
+        <div class="case-process">
+          <div class="process-title">Programme Architecture</div>
+          <div class="process-steps">
+            <div class="process-step">
+              <span class="step-num">01</span>
+              <span class="step-text"><strong>Data and behavioural audit.</strong> ContentSquare, GA4 and Mixpanel used to map friction across homepage, LP and onboarding journeys. Scroll maps, click heat maps and funnel drop-off rates identified where users were losing intent.</span>
+            </div>
+            <div class="process-step">
+              <span class="step-num">02</span>
+              <span class="step-text"><strong>Qualitative discovery.</strong> In-depth interviews and usability sessions run to understand the why behind behavioural patterns. Hypothesis inputs gathered directly from users, not assumed from data alone.</span>
+            </div>
+            <div class="process-step">
+              <span class="step-num">03</span>
+              <span class="step-text"><strong>Hypothesis workshops.</strong> Cross-functional sessions with product, design, engineering and marketing to prioritise hypotheses against effort, confidence and potential impact. Backlog managed in Jira throughout.</span>
+            </div>
+            <div class="process-step">
+              <span class="step-num">04</span>
+              <span class="step-text"><strong>Deployment and monitoring.</strong> Tests built and deployed in Optimizely. Results monitored in ContentSquare, GA4 and Mixpanel with pre-agreed significance thresholds. No decisions made before statistical confidence was reached.</span>
+            </div>
+            <div class="process-step">
+              <span class="step-num">05</span>
+              <span class="step-text"><strong>Ship or retest decision.</strong> Owned the final call on what went to production. Findings from every test fed back into the research backlog to generate the next wave of hypotheses.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="metrics-panel">
+        <div class="metrics-title">Programme Outcomes</div>
+
+        <div class="metric-row">
+          <div class="metric-name">Homepage Bounce Rate</div>
+          <div class="metric-values">
+            <span class="metric-before">75%</span>
+            <span class="metric-arrow">&#8594;</span>
+            <span class="metric-after">51%</span>
+          </div>
+          <div class="metric-bar-wrap">
+            <div class="metric-bar" style="width: 68%"></div>
+          </div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-name">CTA Clickthrough Rate</div>
+          <div class="metric-values">
+            <span class="metric-before">3.17%</span>
+            <span class="metric-arrow">&#8594;</span>
+            <span class="metric-after">8.44%</span>
+          </div>
+          <div class="metric-bar-wrap">
+            <div class="metric-bar" style="width: 85%"></div>
+          </div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-name">Scroll Depth</div>
+          <div class="metric-values">
+            <span class="metric-before">15%</span>
+            <span class="metric-arrow">&#8594;</span>
+            <span class="metric-after">26%</span>
+          </div>
+          <div class="metric-bar-wrap">
+            <div class="metric-bar" style="width: 55%"></div>
+          </div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-name">Journey Completion</div>
+          <div class="metric-values">
+            <span class="metric-after" style="font-size:1.4rem">+24%</span>
+          </div>
+          <div class="metric-bar-wrap">
+            <div class="metric-bar" style="width: 75%"></div>
+          </div>
+        </div>
+
+        <div class="metric-row">
+          <div class="metric-name">Environment</div>
+          <div style="margin-top: 0.5rem; font-size: 0.84rem; color: var(--text-muted); line-height: 1.6;">Regulated fintech. All experimentation operated within FCA compliance requirements, GDPR-compliant consent processes and internal ethics governance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY 2: HYPOTHESIS ENGINE -->
+<section id="methodology" class="case2">
+  <div class="section-inner">
+    <div class="section-eyebrow">Case Study 02</div>
+    <h2 class="section-title">Research as the Conversion Intelligence Engine</h2>
+    <p class="section-intro">Most CRO programmes fail because they run out of good hypotheses. The experimentation function at Tradu stayed productive because research and experimentation were designed as one continuous loop, not two separate workstreams.</p>
+
+    <div class="pipeline-grid">
+      <div class="pipeline-stage">
+        <span class="pipeline-icon">&#9680;</span>
+        <div class="pipeline-stage-label">Signal</div>
+        <h4>Behavioural Data Review</h4>
+        <p>ContentSquare, GA4 and Mixpanel used to identify friction points, drop-off patterns and engagement anomalies. Data surfaced the where.</p>
+      </div>
+      <div class="pipeline-stage">
+        <span class="pipeline-icon">&#9681;</span>
+        <div class="pipeline-stage-label">Discovery</div>
+        <h4>Qualitative Exploration</h4>
+        <p>Usability testing and in-depth interviews conducted specifically to understand the why behind behavioural patterns the data alone could not explain.</p>
+      </div>
+      <div class="pipeline-stage">
+        <span class="pipeline-icon">&#9682;</span>
+        <div class="pipeline-stage-label">Strategy</div>
+        <h4>Hypothesis Development</h4>
+        <p>Cross-functional workshops to generate, challenge and prioritise hypotheses. Each test entered the backlog with a defined rationale, not just a creative preference.</p>
+      </div>
+      <div class="pipeline-stage">
+        <span class="pipeline-icon">&#9683;</span>
+        <div class="pipeline-stage-label">Learning</div>
+        <h4>Results to Research</h4>
+        <p>Every test result, whether it won, lost or was inconclusive, generated new research questions. The cycle was continuous and self-reinforcing.</p>
+      </div>
+    </div>
+
+    <div class="case2-bottom">
+      <div class="insight-card">
+        <h4>What this meant in practice</h4>
+        <p>The backlog was never empty because every experiment created new questions. When a homepage test increased scroll depth but did not move CTA conversion, the follow-up was not another button colour test. It was a qualitative study to understand what users were reading and why they were still not converting. That is what kept the programme generating commercial impact rather than running out of ideas.</p>
+      </div>
+      <div class="insight-card">
+        <h4>Compliance as a design constraint</h4>
+        <p>In regulated financial services, experimentation is not just a product decision. Every test involving customer data, messaging or journey design operated within GDPR-compliant consent processes, ethical research governance and internal compliance review. These were not bolt-on checks. They were built into the programme architecture from the start, anticipating Consumer Duty requirements before they became mandatory.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY 3: SURVEY PROGRAMME -->
+<section id="surveys">
+  <div class="section-inner">
+    <div class="section-eyebrow">Case Study 03</div>
+    <h2 class="section-title">Reaching the Audiences Standard Acquisition Research Missed</h2>
+    <p class="section-intro">Conversion data tells you that users are dropping off. It does not tell you which users, or why. A targeted survey programme built to reach disengaged and hard-to-recruit segments changed what the product team understood about where acquisition was actually failing.</p>
+
+    <div class="survey-grid">
+      <div>
+        <div class="challenge-block">
+          <div class="challenge-label">The Gap</div>
+          <p>Usability testing and standard recruitment methods consistently over-represented engaged, digitally confident users. The segments with the highest drop-off rates, users who had started onboarding but not completed it, and users who had visited but never converted, were not reachable through standard research recruitment. The product team was optimising for the users it could hear, not the ones it was losing.</p>
+        </div>
+
+        <div class="challenge-block">
+          <div class="challenge-label">The Approach</div>
+          <p>Designed a survey programme specifically architected to intercept disengaged segments at the right moment in the journey. Integrated surveys into email campaigns targeting users who had abandoned onboarding, and embedded rating scales into FAQ articles where users who had not converted were spending time. Segmented results by journey stage, platform and customer profile to surface distinct barriers that aggregate data had been masking.</p>
+        </div>
+
+        <div class="challenge-block">
+          <div class="challenge-label">Why it mattered for CRO</div>
+          <p>The findings changed what went into the experimentation backlog. Tests that had been prioritised based on the visible majority were deprioritised in favour of journey fixes that the hard-to-reach data showed were blocking a larger proportion of potential converters. The product roadmap shifted as a direct result.</p>
+        </div>
+      </div>
+
+      <div class="outcome-stack">
+        <div class="outcome-item">
+          <div class="outcome-num">5%</div>
+          <div class="outcome-text">
+            <h5>Conversion rate improvement</h5>
+            <p>Platform-wide conversion lift attributable to journey changes informed by segmented survey findings.</p>
+          </div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-num">4%</div>
+          <div class="outcome-text">
+            <h5>Onboarding abandonment reduction</h5>
+            <p>Improvement in onboarding completion rate following targeted changes to the journeys the survey data had identified as most problematic.</p>
+          </div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-num">NPS</div>
+          <div class="outcome-text">
+            <h5>Continuous NPS tracking</h5>
+            <p>Integrated rating scales in email and FAQ touchpoints provided ongoing NPS signals used in regulatory reporting and product investment decisions.</p>
+          </div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-num">&#8594;</div>
+          <div class="outcome-text">
+            <h5>Roadmap influence</h5>
+            <p>Findings directly changed experimentation priorities and prevented two product releases that data showed would not perform with the segments they were targeting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise" class="expertise">
+  <div class="section-inner">
+    <div class="section-eyebrow">Capabilities</div>
+    <h2 class="section-title">What I bring to a CRO function</h2>
+    <p class="section-intro">The skills that made this work are not just technical. They are the combination of research craft, commercial instinct and stakeholder credibility that keeps experimentation programmes funded, trusted and productive.</p>
+
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h4>End-to-End Experimentation Ownership</h4>
+        <p>From the first hypothesis workshop to the final production decision. Backlog managed in Jira. Tests deployed in Optimizely. Results monitored in ContentSquare, GA4 and Mixpanel. No handoffs in the middle of the cycle.</p>
+      </div>
+      <div class="expertise-card">
+        <h4>Commercial Acumen</h4>
+        <p>Every test was connected to a business outcome. Findings were presented in terms of acquisition impact, revenue exposure and journey completion, not just statistical significance. The business cared because the evidence was framed in the language it understood.</p>
+      </div>
+      <div class="expertise-card">
+        <h4>Regulated Environment Fluency</h4>
+        <p>Built GDPR-compliant consent processes and ethical governance frameworks from scratch. Maintained compliance across all data collection touchpoints. Directly relevant to Consumer Duty obligations and the evidence standard that regulated firms are required to meet.</p>
+      </div>
+      <div class="expertise-card">
+        <h4>Qualitative and Quantitative Integration</h4>
+        <p>Behavioural analytics surfaced friction. Qualitative research explained it. Surveys reached the segments standard methods missed. The three inputs ran as one connected intelligence function, not separate workstreams.</p>
+      </div>
+      <div class="expertise-card">
+        <h4>Cross-Functional Collaboration at Pace</h4>
+        <p>Managed multiple active experiments simultaneously, coordinating across engineering, design, product and marketing. Delivered results in agile sprint cycles without sacrificing the evidence quality that made stakeholders trust the findings.</p>
+      </div>
+      <div class="expertise-card">
+        <h4>SEO and AIO Awareness</h4>
+        <p>Collaborated with SEO teams on landing page optimisation as part of the broader acquisition and conversion strategy. Familiar with AIO principles and began strategising on AI-driven content discovery optimisation ahead of the next phase of platform growth.</p>
+      </div>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-chip">Optimizely</span>
+      <span class="tool-chip">ContentSquare</span>
+      <span class="tool-chip">GA4</span>
+      <span class="tool-chip">Mixpanel</span>
+      <span class="tool-chip">Segment</span>
+      <span class="tool-chip">UserTesting</span>
+      <span class="tool-chip">SurveyMonkey</span>
+      <span class="tool-chip">SEMrush</span>
+      <span class="tool-chip">Jira</span>
+      <span class="tool-chip">Confluence</span>
+      <span class="tool-chip">Figma</span>
+      <span class="tool-chip">Miro</span>
+      <span class="tool-chip">Tableau</span>
+      <span class="tool-chip">Opal AI</span>
+      <span class="tool-chip">Copilot AI</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Anastasiya Lupashko &nbsp;|&nbsp; <a href="mailto:anast.lup@gmail.com">anast.lup@gmail.com</a> &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/anastasiya-lupashko-47360920a" target="_blank">LinkedIn</a> &nbsp;|&nbsp; <a href="https://anastasiyalupashko.github.io/portfolio/" target="_blank">Full Portfolio</a></p>
+</footer>
+
+</body>
+</html>
